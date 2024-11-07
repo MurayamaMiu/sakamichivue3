@@ -2,7 +2,8 @@
   <div class="background">
     <img :src="currentSong.cover" id="bg-img" />
   </div>
-  <div class="container">
+  <div class="wrapper">
+    <div class="container">
     <div class="player-img">
       <img :src="currentSong.cover" class="active" id="cover" />
     </div>
@@ -165,6 +166,8 @@
       </div>
     </div>
   </div>
+  </div>
+
 </template>
 
 <script>
@@ -717,28 +720,39 @@ export default {
   color: #666666;
 }
 
-/* 调整 container */
+/* 外层 wrapper，负责整体垂直居中 */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: transparent;
+  color: transparent;
+  border-radius: 20px;
+}
+
+/* container 设置 */
 .container {
   background-color: #e7e7e7;
-  height: calc(90vh + 6vh); /* 包含图片上浮的 6vh */
+  height: 90vh; /* 不再额外添加上浮部分 */
   width: 95vw;
   border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: auto;
   position: relative;
-  max-height: calc(840px);
+  max-height: 840px;
   max-width: 460px;
 }
 
 /* 移动设备的 container 设置 */
 @media (max-width: 768px) {
   .container {
-    max-height: calc(700px); /* 包含上浮的 6vh */
+    max-height: 600px;
     max-width: 360px;
   }
 }
@@ -748,7 +762,7 @@ export default {
   height: 35vh;
   width: 15vw;
   position: relative;
-  transform: translateY(-6vh); /* 统一设置上浮 */
+  transform: translateY(-6vh); /* 图片上浮 */
   margin: auto auto -5vh;
 }
 
@@ -773,7 +787,7 @@ export default {
   height: 0;
   width: 0;
   opacity: 0;
-  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.5);
 }
 
 .player-img:hover img {

@@ -127,7 +127,6 @@ export default {
 
 .main-container {
   display: flex;
-  background-color: #e7e7e7;
   border-radius: 20px;
   transition: all 0.5s ease;
   height: 100%;
@@ -164,6 +163,7 @@ export default {
 .app {
   font-family: 'PingFangTC-Medium', serif;
   font-weight: 400;
+  border-radius: 20px;
 }
 
 /* 手机端样式 */
