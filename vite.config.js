@@ -14,7 +14,15 @@ export default defineConfig({
     vueJsx(),
     VitePWA({
       registerType: 'autoUpdate',  // 自动更新服务工作线程
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  // 包括的文件
+      // includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  // 包括的文件
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.origin === 'https://murayamamiu.github.io',
+            handler: 'CacheFirst',
+          },
+        ],
+      },
       manifest: {
         name: 'SakamichiVue3',
         short_name: 'Sakamichi',
