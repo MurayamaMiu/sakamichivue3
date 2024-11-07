@@ -388,6 +388,13 @@ export default {
         }
       }
     },
+    updatePositionState() {
+        navigator.mediaSession.setPositionState({
+          duration: this.duration,
+          playbackRate: 1,
+          position: this.currentTime,
+        })
+      },
     loadMusic(song) {
       if (this.sound && this.sound instanceof Howl) {
         try {
@@ -399,12 +406,15 @@ export default {
 
       // 更新 Media Session 元数据
       if ('mediaSession' in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({
+        ;(navigator.mediaSession.metadata = new MediaMetadata({
           title: song.displayName,
           artist: song.artist,
           album: song.displayName,
           artwork: [{ src: song.cover }],
-        })
+        })),
+          navigator.mediaSession.setActionHandler('seekbackward', () => {
+            this.updatePositionState()
+          })
       }
 
       this.currentSong = song
