@@ -429,6 +429,13 @@ export default {
       this.sound = new Howl({
         src: [song.path],
         html5: true,
+        preload: true, // 确保预加载完整文件
+        xhr: {
+          // 设置请求头，确保加载完整文件
+          headers: {
+            Range: 'bytes=0-',
+          },
+        },
         // rate: 1, //播放速度 0.5 - 4
         // pool: 5, //类似数据库中的连接池，保留了一个池来回收利用以提高性能。声音暂停不会从池中删除。
         onplay: () => {
