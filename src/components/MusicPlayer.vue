@@ -775,7 +775,7 @@ export default {
   text-align: center;
   margin: auto;
   position: relative;
-  max-height: 740px; /* 最大高度 */
+  max-height: 840px; /* 最大高度 */
   max-width: 460px; /* 最大宽度 */
   /* min-width: 400px;
   min-height: 680px; */

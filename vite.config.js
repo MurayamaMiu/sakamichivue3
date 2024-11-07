@@ -24,8 +24,8 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'SakamichiVue3',
-        short_name: 'Sakamichi',
+        name: 'SakamichiVue3Player',
+        short_name: 'SakamichiPlayer',
         description: '坂道應用合集',
         theme_color: '#ffffff',
         background_color: '#ffffff',
