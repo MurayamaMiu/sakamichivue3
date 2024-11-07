@@ -314,8 +314,8 @@ export default {
 }
 
 .list-group {
-  max-height: 100svh; /* 最大高度 */
-  min-height: 100svh;
+  max-height: 100vh; /* 最大高度 */
+  min-height: 100vh;
   /* min-width: 400px; */
   /* min-height: 740px; */
   max-width: 440px;

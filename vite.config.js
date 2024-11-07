@@ -31,7 +31,7 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         scope: '/',
-        start_url: '/',
+        start_url: 'https://murayamamiu.github.io/sakamichivue3/',
         icons: [
           {
             src: 'icon/logo192.png',
