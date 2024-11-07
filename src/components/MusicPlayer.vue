@@ -751,7 +751,7 @@ export default {
 /* 移动设备的 container 设置 */
 @media (max-width: 768px) {
   .container {
-    max-height: 650px;
+    max-height: 620px;
     max-width: 360px;
   }
 }
@@ -761,7 +761,7 @@ export default {
   height: 35vh;
   width: 15vw;
   position: relative;
-  transform: translateY(-8vh); /* 图片上浮 */
+  transform: translateY(-10vh); /* 图片上浮 */
   margin: auto auto -5vh;
 }
 
