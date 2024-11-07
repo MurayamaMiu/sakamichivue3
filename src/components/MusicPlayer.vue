@@ -413,9 +413,9 @@ export default {
           artwork: [{ src: song.cover }],
         })
 
-        navigator.mediaSession.setActionHandler('seekbackward', () => {
-          this.updatePositionState()
-        })
+        // navigator.mediaSession.setActionHandler('seekbackward', () => {
+        //   this.updatePositionState()
+        // })
       }
 
       this.currentSong = song
