@@ -751,7 +751,7 @@ export default {
 /* 移动设备的 container 设置 */
 @media (max-width: 768px) {
   .container {
-    max-height: 700px;
+    max-height: 600px;
     max-width: 360px;
   }
 }
