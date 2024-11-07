@@ -728,7 +728,6 @@ export default {
   min-height: 100vh;
   overflow: hidden;
   background-color: transparent;
-  color: transparent;
   border-radius: 20px;
 }
 
