@@ -738,7 +738,7 @@ export default {
   height: 90vh; /* 不再额外添加上浮部分 */
   width: 95vw;
   border-radius: 20px;
-  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+/*   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3); */
   transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
@@ -807,7 +807,7 @@ export default {
 }
 
 .container:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+/*  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); */
 }
 
 h2 {
