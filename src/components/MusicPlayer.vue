@@ -731,14 +731,14 @@ export default {
   text-align: center;
   margin: auto;
   position: relative;
-  max-height: calc(840px + 6vh);
+  max-height: calc(840px);
   max-width: 460px;
 }
 
 /* 移动设备的 container 设置 */
 @media (max-width: 768px) {
   .container {
-    max-height: calc(600px + 6vh); /* 包含上浮的 6vh */
+    max-height: calc(700px); /* 包含上浮的 6vh */
     max-width: 360px;
   }
 }
