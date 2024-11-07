@@ -1,0 +1,82 @@
+/* slider.css */
+
+.progress-slider {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    #212121 0%,
+    #212121 var(--progress),
+    #e9ecef var(--progress),
+    #e9ecef 100%
+  );
+  border-radius: 5px;
+  cursor: pointer;
+  transition: height 0.2s;
+}
+
+.progress-slider:active,
+.progress-slider.active {
+  height: 12px; /* 点击或触摸时增加高度 */
+}
+
+.progress-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+}
+
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #666666; /* 默认圆点颜色 */
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -4px;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+}
+
+.progress-slider::-webkit-slider-thumb:hover {
+  background-color: #1e9fff; /* 悬停时的自定义颜色 */
+}
+
+.progress-slider::-webkit-slider-thumb:active {
+  transform: scale(1.5); /* 点击时放大效果 */
+}
+
+.progress-slider::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    #212121 var(--progress),
+    #e9ecef var(--progress),
+    #e9ecef 100%
+  );
+  border-radius: 5px;
+}
+
+.progress-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: #1e9fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+}
+
+.progress-slider::-moz-range-thumb:hover {
+  background-color: #1e9fff;
+}
+
+.progress-slider::-moz-range-thumb:active {
+  transform: scale(1.5);
+}

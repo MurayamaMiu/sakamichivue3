@@ -1,0 +1,412 @@
+{
+  "songs": [
+    {
+      "id": 1,
+      "path": "music/乃木坂46/STAR..MP3",
+      "lrcPath": "music/乃木坂46/STAR..MP3",
+      "displayName": "STAR.",
+      "cover": "image/STAR..jpg",
+      "artist": "乃木坂46"
+    },
+    {
+      "id": 2,
+      "path": "music/乃木坂46/乃木坂46-OVERTURE.mp3",
+      "lrcPath": "music/乃木坂46/乃木坂46-OVERTURE.lrc",
+      "displayName": "OVERTURE",
+      "cover": "image/乃木坂46-OVERTURE.jpg",
+      "artist": "乃木坂46"
+    },
+    {
+      "id": 3,
+      "path": "music/日向坂46/日向坂46 - Overture.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - Overture.lrc",
+      "displayName": "Overture",
+      "cover": "image/日向坂46 - Overture.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 4,
+      "path": "music/日向坂46/日向坂46 - キュン.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - キュン.lrc",
+      "displayName": "キュン",
+      "cover": "image/日向坂46 - キュン.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 5,
+      "path": "music/日向坂46/日向坂46 - ドレミソラシド.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - ドレミソラシド.lrc",
+      "displayName": "ドレミソラシド",
+      "cover": "image/日向坂46 - ドレミソラシド.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 6,
+      "path": "music/日向坂46/日向坂46 - ブルーベリー＆ラズベリー.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - ブルーベリー＆ラズベリー.lrc",
+      "displayName": "ブルーベリー＆ラズベリー",
+      "cover": "image/日向坂46 - ブルーベリー＆ラズベリー.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 7,
+      "path": "music/日向坂46/日向坂46 - 僕なんか.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - 僕なんか.lrc",
+      "displayName": "僕なんか",
+      "cover": "image/日向坂46 - 僕なんか.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 8,
+      "path": "music/日向坂46/日向坂46 - 声の足跡.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - 声の足跡.lrc",
+      "displayName": "声の足跡",
+      "cover": "image/日向坂46 - 声の足跡.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 9,
+      "path": "music/日向坂46/日向坂46 - 月と星が踊るMidnight.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - 月と星が踊るMidnight.lrc",
+      "displayName": "月と星が踊るMidnight",
+      "cover": "image/日向坂46 - 月と星が踊るMidnight.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 10,
+      "path": "music/日向坂46/日向坂46 - 誰よりも高く跳べ！.mp3",
+      "lrcPath": "music/日向坂46/日向坂46 - 誰よりも高く跳べ！.lrc",
+      "displayName": "誰よりも高く跳べ！",
+      "cover": "image/日向坂46 - 誰よりも高く跳べ！.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 11,
+      "path": "music/日向坂46/日向坂46-Cage.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-Cage.lrc",
+      "displayName": "Cage",
+      "cover": "image/日向坂46-Cage.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 12,
+      "path": "music/日向坂46/日向坂46-NO WAR in the future 2020.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-NO WAR in the future 2020.lrc",
+      "displayName": "NO WAR in the future 2020",
+      "cover": "image/日向坂46-NO WAR in the future 2020.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 13,
+      "path": "music/日向坂46/日向坂46-こんなに好きになっちゃっていいの.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-こんなに好きになっちゃっていいの.lrc",
+      "displayName": "こんなに好きになっちゃっていいの",
+      "cover": "image/日向坂46-こんなに好きになっちゃっていいの.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 14,
+      "path": "music/日向坂46/日向坂46-こんな整列を誰がさせるのか？.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-こんな整列を誰がさせるのか？.lrc",
+      "displayName": "こんな整列を誰がさせるのか？",
+      "cover": "image/日向坂46-こんな整列を誰がさせるのか？.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 15,
+      "path": "music/日向坂46/日向坂46-ってか.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-ってか.lrc",
+      "displayName": "ってか",
+      "cover": "image/日向坂46-ってか.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 16,
+      "path": "music/日向坂46/日向坂46-わずかな光.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-わずかな光.lrc",
+      "displayName": "わずかな光",
+      "cover": "image/日向坂46-わずかな光.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 17,
+      "path": "music/日向坂46/日向坂46-アディショナルタイム.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-アディショナルタイム.lrc",
+      "displayName": "アディショナルタイム",
+      "cover": "image/日向坂46-アディショナルタイム.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 18,
+      "path": "music/日向坂46/日向坂46-ガラス窓が汚れてる.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-ガラス窓が汚れてる.lrc",
+      "displayName": "ガラス窓が汚れてる",
+      "cover": "image/日向坂46-ガラス窓が汚れてる.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 19,
+      "path": "music/日向坂46/日向坂46-居心地悪く、大人になった.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-居心地悪く、大人になった.lrc",
+      "displayName": "居心地悪く、大人になった",
+      "cover": "image/日向坂46-居心地悪く、大人になった.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 20,
+      "path": "music/日向坂46/日向坂46-月と星が踊るMidnight.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-月と星が踊るMidnight.lrc",
+      "displayName": "月と星が踊るMidnight",
+      "cover": "image/日向坂46-月と星が踊るMidnight.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 21,
+      "path": "music/日向坂46/日向坂46-期待していない自分.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-期待していない自分.lrc",
+      "displayName": "期待していない自分",
+      "cover": "image/日向坂46-期待していない自分.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 22,
+      "path": "music/日向坂46/日向坂46-男友達だから.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-男友達だから.lrc",
+      "displayName": "男友達だから",
+      "cover": "image/日向坂46-男友達だから.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 23,
+      "path": "music/日向坂46/日向坂46-約束の卵.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-約束の卵.lrc",
+      "displayName": "約束の卵",
+      "cover": "image/日向坂46-約束の卵.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 24,
+      "path": "music/日向坂46/日向坂46-絶対的第六感.mp3",
+      "lrcPath": "music/日向坂46/日向坂46-絶対的第六感.lrc",
+      "displayName": "絶対的第六感",
+      "cover": "image/日向坂46-絶対的第六感.jpg",
+      "artist": "日向坂46"
+    },
+    {
+      "id": 25,
+      "path": "music/櫻坂46/ピッカーン！.mp3",
+      "lrcPath": "music/櫻坂46/ピッカーン！.lrc",
+      "displayName": "ピッカーン！",
+      "cover": "image/ピッカーン！.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 26,
+      "path": "music/櫻坂46/櫻坂46 - I want tomorrow to come.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46 - I want tomorrow to come.lrc",
+      "displayName": "I want tomorrow to come",
+      "cover": "image/櫻坂46 - I want tomorrow to come.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 27,
+      "path": "music/櫻坂46/櫻坂46 - 本質的なこと.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46 - 本質的なこと.lrc",
+      "displayName": "本質的なこと",
+      "cover": "image/櫻坂46 - 本質的なこと.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 28,
+      "path": "music/櫻坂46/櫻坂46-BAN.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-BAN.lrc",
+      "displayName": "BAN",
+      "cover": "image/櫻坂46-BAN.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 29,
+      "path": "music/櫻坂46/櫻坂46-Dead end.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-Dead end.lrc",
+      "displayName": "Dead end",
+      "cover": "image/櫻坂46-Dead end.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 30,
+      "path": "music/櫻坂46/櫻坂46-I’m in.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-I’m in.lrc",
+      "displayName": "I’m in",
+      "cover": "image/櫻坂46-I’m in.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 31,
+      "path": "music/櫻坂46/櫻坂46-Overture.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-Overture.lrc",
+      "displayName": "Overture",
+      "cover": "image/櫻坂46-Overture.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 32,
+      "path": "music/櫻坂46/櫻坂46-TOKYO SNOW.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-TOKYO SNOW.lrc",
+      "displayName": "TOKYO SNOW",
+      "cover": "image/櫻坂46-TOKYO SNOW.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 33,
+      "path": "music/櫻坂46/櫻坂46-僕は僕を好きになれない.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-僕は僕を好きになれない.lrc",
+      "displayName": "僕は僕を好きになれない",
+      "cover": "image/櫻坂46-僕は僕を好きになれない.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 34,
+      "path": "music/櫻坂46/櫻坂46-君がサヨナラ言えたって.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-君がサヨナラ言えたって.lrc",
+      "displayName": "君がサヨナラ言えたって",
+      "cover": "image/櫻坂46-君がサヨナラ言えたって.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 35,
+      "path": "music/櫻坂46/櫻坂46-夏の近道.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-夏の近道.lrc",
+      "displayName": "夏の近道",
+      "cover": "image/櫻坂46-夏の近道.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 36,
+      "path": "music/櫻坂46/櫻坂46-断絶.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-断絶.lrc",
+      "displayName": "断絶",
+      "cover": "image/櫻坂46-断絶.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 37,
+      "path": "music/櫻坂46/櫻坂46-条件反射で泣けて来る.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-条件反射で泣けて来る.lrc",
+      "displayName": "条件反射で泣けて来る",
+      "cover": "image/櫻坂46-条件反射で泣けて来る.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 38,
+      "path": "music/櫻坂46/櫻坂46-自業自得.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-自業自得.lrc",
+      "displayName": "自業自得",
+      "cover": "image/櫻坂46-自業自得.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 39,
+      "path": "music/櫻坂46/櫻坂46-静寂の暴力.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-静寂の暴力.lrc",
+      "displayName": "静寂の暴力",
+      "cover": "image/櫻坂46-静寂の暴力.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 40,
+      "path": "music/櫻坂46/璃花酱，尚未完成！.mp3",
+      "lrcPath": "music/櫻坂46/璃花酱，尚未完成！.lrc",
+      "displayName": "璃花酱，尚未完成！",
+      "cover": "image/璃花酱，尚未完成！.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 41,
+      "path": "music/欅坂46/欅坂46 - W-KEYAKIZAKAの詩.mp3",
+      "lrcPath": "music/欅坂46/欅坂46 - W-KEYAKIZAKAの詩.lrc",
+      "displayName": "W-KEYAKIZAKAの詩",
+      "cover": "image/欅坂46 - W-KEYAKIZAKAの詩.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 42,
+      "path": "music/欅坂46/欅坂46 - 誰がその鐘を鳴らすのか？.mp3",
+      "lrcPath": "music/欅坂46/欅坂46 - 誰がその鐘を鳴らすのか？.lrc",
+      "displayName": "誰がその鐘を鳴らすのか？",
+      "cover": "image/欅坂46 - 誰がその鐘を鳴らすのか？.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 43,
+      "path": "music/欅坂46/欅坂46-Overture.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-Overture.lrc",
+      "displayName": "Overture",
+      "cover": "image/欅坂46-Overture.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 44,
+      "path": "music/欅坂46/欅坂46-不協和音.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-不協和音.lrc",
+      "displayName": "不協和音",
+      "cover": "image/欅坂46-不協和音.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 45,
+      "path": "music/欅坂46/欅坂46-世界には愛しかない.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-世界には愛しかない.lrc",
+      "displayName": "世界には愛しかない",
+      "cover": "image/欅坂46-世界には愛しかない.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 46,
+      "path": "music/欅坂46/欅坂46-二人セゾン.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-二人セゾン.lrc",
+      "displayName": "二人セゾン",
+      "cover": "image/欅坂46-二人セゾン.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 47,
+      "path": "music/欅坂46/欅坂46-僕たちは付き合っている.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-僕たちは付き合っている.lrc",
+      "displayName": "僕たちは付き合っている",
+      "cover": "image/欅坂46-僕たちは付き合っている.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 48,
+      "path": "music/欅坂46/欅坂46-半分の記憶.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-半分の記憶.lrc",
+      "displayName": "半分の記憶",
+      "cover": "image/欅坂46-半分の記憶.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 49,
+      "path": "music/欅坂46/欅坂46-東京タワーはどこから見える？.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-東京タワーはどこから見える？.lrc",
+      "displayName": "東京タワーはどこから見える？",
+      "cover": "image/欅坂46-東京タワーはどこから見える？.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 50,
+      "path": "music/欅坂46/欅坂46-渋谷川.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-渋谷川.lrc",
+      "displayName": "渋谷川",
+      "cover": "image/欅坂46-渋谷川.jpg",
+      "artist": "欅坂46"
+    },
+    {
+      "id": 51,
+      "path": "music/欅坂46/欅坂46-黒い羊.mp3",
+      "lrcPath": "music/欅坂46/欅坂46-黒い羊.lrc",
+      "displayName": "黒い羊",
+      "cover": "image/欅坂46-黒い羊.jpg",
+      "artist": "欅坂46"
+    }
+  ]
+}

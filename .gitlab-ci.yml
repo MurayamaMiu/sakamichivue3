@@ -1,0 +1,27 @@
+image: node:latest # 使用最新版本的 Node.js Docker 镜像
+
+pages: # 定義用於部署的頁面
+  stage: deploy # 指定這個作業的階段為 deploy
+  cache: # 定義緩存
+    key: # 緩存的唯一鍵
+      files:
+        - package-lock.json # 依賴文件變化時更新緩存
+      prefix: npm # 緩存前綴
+    paths:
+      - node_modules/ # 緩存 node_modules 目錄
+  script: # 執行的腳本
+    - npm install # 安装项目依赖
+    - cd docs && npm run docs:build # 生成文档
+    # - cp -a docs/.vuepress/dist/. public/docs/ # 将文档复制到 public/docs
+    - cd ..
+    - cd public
+    - node extract-covers.js
+    - node songs-json-creation.js
+    - cd ..
+    - npm run build # 构建项目
+    - cp -a dist/. public/ # 将构建结果复制到 public 目录
+  artifacts: # 定義構建後產物
+    paths:
+      - public # 指定需要保存的目錄
+  rules: # 規則定義
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH # 僅在默認分支上執行
