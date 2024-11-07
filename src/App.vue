@@ -130,6 +130,11 @@ export default {
   background-color: #e7e7e7;
   border-radius: 20px;
   transition: all 0.5s ease;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* 禁止滚动 */
+  margin: 0;
+  padding: 0;
 }
 
 .slide-fade-enter-active,

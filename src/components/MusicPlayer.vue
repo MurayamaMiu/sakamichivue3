@@ -717,31 +717,56 @@ export default {
   color: #666666;
 }
 
+/* 调整 container */
+.container {
+  background-color: #e7e7e7;
+  height: calc(90vh + 6vh); /* 包含图片上浮的 6vh */
+  width: 95vw;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  position: relative;
+  max-height: calc(840px + 6vh);
+  max-width: 460px;
+}
+
+/* 移动设备的 container 设置 */
+@media (max-width: 768px) {
+  .container {
+    max-height: calc(600px + 6vh); /* 包含上浮的 6vh */
+    max-width: 360px;
+  }
+}
+
+/* 优化 player-img */
 .player-img {
   height: 35vh;
   width: 15vw;
   position: relative;
-  top: -6vh;
-  transform: translateY(-3vh); /* 根据需要调整上移距离 */
-  /* 防止占据空间 */
+  transform: translateY(-6vh); /* 统一设置上浮 */
   margin: auto auto -5vh;
 }
 
-/* 默认设置适用于桌面 */
+/* 桌面设备的 player-img 设置 */
 .player-img {
   min-width: 420px;
   min-height: 420px;
 }
 
-/* 移动设备 */
+/* 移动设备的 player-img 设置 */
 @media (max-width: 768px) {
-  /* 小于768px的设备 */
   .player-img {
     min-width: 320px;
     min-height: 320px;
   }
 }
 
+/* 图片样式 */
 .player-img img {
   object-fit: cover;
   border-radius: 20px;
@@ -762,35 +787,6 @@ export default {
   opacity: 1;
 }
 
-.container {
-  background-color: #e7e7e7;
-  height: 90vh;
-  width: 95vw;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
-  display: flex; /* 启用 Flexbox */
-  flex-direction: column;
-  justify-content: center; /* 水平居中 */
-  text-align: center;
-  margin: auto;
-  position: relative;
-  max-height: 840px; /* 最大高度 */
-  max-width: 460px; /* 最大宽度 */
-  /* min-width: 400px;
-  min-height: 680px; */
-}
-
-/* 移动设备 */
-@media (max-width: 768px) {
-  /* 小于768px的设备 */
-  .container {
-    max-height: 600px; /* 最大高度 */
-    max-width: 360px; /* 最大宽度 */
-    /* min-width: 360px;
-    min-height: 600px; */
-  }
-}
 
 .label {
   margin-top: -2vh;
