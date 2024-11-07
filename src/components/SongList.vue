@@ -163,7 +163,7 @@ export default {
     },
     async fetchSongs() {
       try {
-        const response = await axios.get('/songs.json')
+        const response = await axios.get('songs.json')
         this.songs = response.data.songs
         this.filteredSongs = this.songs // 初始化时显示所有歌曲
         this.loadFavoritedSongs() // 在获取到歌曲后调用

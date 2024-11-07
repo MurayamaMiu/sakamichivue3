@@ -327,7 +327,7 @@ export default {
     },
     async fetchSongs() {
       try {
-        const response = await axios.get('/songs.json')
+        const response = await axios.get('songs.json')
         this.songs = response.data.songs
 
         const savedSongId = parseInt(localStorage.getItem('currentSongId'), 10) // 转换为数字
