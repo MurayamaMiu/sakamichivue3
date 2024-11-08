@@ -51,7 +51,7 @@
           data-bs-toggle="tab"
           href="#favorited-songs"
           @click="switchTab('sakurazaka')"
-          >櫻坂46</a
+          >{{ $t('sakurazaka46') }}</a
         >
       </li>
 
@@ -61,7 +61,7 @@
           data-bs-toggle="tab"
           href="#favorited-songs"
           @click="switchTab('nogizaka')"
-          >乃木坂46</a
+          >{{ $t('nogizaka46') }}</a
         >
       </li>
 
@@ -71,7 +71,7 @@
           data-bs-toggle="tab"
           href="#favorited-songs"
           @click="switchTab('hinatazaka')"
-          >日向坂46</a
+          >{{ $t('hinatazaka46') }}</a
         >
       </li>
 
@@ -81,7 +81,7 @@
           data-bs-toggle="tab"
           href="#favorited-songs"
           @click="switchTab('keyakizaka')"
-          >欅坂46</a
+          >{{ $t('keyakizaka46') }}</a
         >
       </li>
     </ul>
@@ -320,7 +320,6 @@ export default {
   /* min-height: 740px; */
   max-width: 440px;
   overflow-y: auto;
-  border-radius: 20px;
   background-color: #e7e7e7;
 }
 

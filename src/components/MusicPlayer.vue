@@ -2,8 +2,7 @@
   <div class="background">
     <img :src="currentSong.cover" id="bg-img" />
   </div>
-  <div class="wrapper">
-    <div class="container">
+  <div class="container">
     <div class="player-img">
       <img :src="currentSong.cover" class="active" id="cover" />
     </div>
@@ -100,10 +99,10 @@
       ></i>
       <i v-else class="bi bi-bookmark-heart" @click="toggleFavorite"></i>
       <i
-        class="bi bi-volume-up-fill"
-        id="volumeIcon"
+        class="bi bi-sliders"
+        id="settingsIcon"
         data-bs-toggle="modal"
-        data-bs-target="#volumeModal"
+        data-bs-target="#settingsModal"
       ></i>
       <i
         class="bi bi-music-note-list"
@@ -111,7 +110,7 @@
         style="cursor: pointer"
       ></i>
       <!--      <i class="bi bi-three-dots"></i>-->
-      <i class="bi bi-translate" @click="changeLanguage('zh')"></i>
+
       <i
         class="bi bi-journal-code"
         @click="goToDocs"
@@ -122,9 +121,9 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="volumeModal"
+      id="settingsModal"
       tabindex="-1"
-      aria-labelledby="volumeModalLabel"
+      aria-labelledby="settingsModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered">
@@ -132,10 +131,10 @@
           <div class="modal-header">
             <h4
               class="modal-title fs-5"
-              id="volumeModalLabel"
+              id="settingsModalLabel"
               style="font-size: 15px !important"
             >
-              {{ $t('volume') }}
+              {{ $t('settings') }}
             </h4>
             <button
               type="button"
@@ -145,29 +144,116 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="volume-control">
-              <i class="bi bi-volume-up-fill volume-icon"></i>
-              <vue-slider
-                v-model="volumeSliderValue"
-                :min="0"
-                :max="100"
-                :height="10"
-                :dot-size="16"
-                :drag-on-click="true"
-                :tooltip="'focus'"
-                :duration="0.2"
-                :silent="true"
-                @change="handleVolumeChange"
-                class="volume-slider"
-              />
+            <div class="modal-content-custom">
+              <div class="settings-control">
+                <i class="bi bi-volume-up-fill settings-icon"></i>
+                <vue-slider
+                  v-model="volumeSliderValue"
+                  :min="0"
+                  :max="100"
+                  :height="10"
+                  :dot-size="16"
+                  :drag-on-click="true"
+                  :tooltip="'focus'"
+                  :duration="0.2"
+                  :silent="true"
+                  @change="handleVolumeChange"
+                  class="settings-slider"
+                />
+              </div>
+              <div class="settings-control">
+                <i class="bi bi-speedometer2 settings-icon"></i>
+                <vue-slider
+                  v-model="speedSliderValue"
+                  :marks="true"
+                  :interval="0.5"
+                  :min="0"
+                  :max="2"
+                  :height="10"
+                  :dot-size="16"
+                  :drag-on-click="true"
+                  :tooltip="'focus'"
+                  :duration="0.2"
+                  :silent="true"
+                  @change="handleSpeedChange"
+                  class="settings-slider"
+                />
+              </div>
+              <div class="settings-control" style="margin-top: 30px">
+                <i class="bi bi-translate settings-icon"></i>
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic radio toggle button group"
+                >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="btnradio"
+                    id="btnradio1"
+                    autocomplete="off"
+                    value="zh"
+                    v-model="selectedLanguage"
+                  />
+                  <label
+                    class="btn btn-outline-primary btn-custom"
+                    for="btnradio1"
+                    @click="changeLanguage('zh')"
+                    >正體中文</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check btn-custom"
+                    name="btnradio"
+                    id="btnradio3"
+                    autocomplete="off"
+                    value="ja"
+                    v-model="selectedLanguage"
+                  />
+                  <label
+                    class="btn btn-outline-primary btn-custom"
+                    for="btnradio3"
+                    @click="changeLanguage('ja')"
+                    >日本語</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check btn-custom"
+                    name="btnradio"
+                    id="btnradio2"
+                    @click="changeLanguage('en')"
+                    value="en"
+                    v-model="selectedLanguage"
+                    autocomplete="off"
+                  />
+                  <label
+                    class="btn btn-outline-primary btn-custom"
+                    for="btnradio2"
+                    >English</label
+                  >
+                  <input
+                    type="radio"
+                    class="btn-check btn-custom"
+                    name="btnradio"
+                    id="btnradio4"
+                    @click="changeLanguage('kr')"
+                    value="kr"
+                    v-model="selectedLanguage"
+                    autocomplete="off"
+                  />
+                  <label
+                    class="btn btn-outline-primary btn-custom"
+                    for="btnradio4"
+                    >한국어</label
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
 </template>
 
 <script>
@@ -189,10 +275,14 @@ export default {
   },
   data() {
     return {
+      selectedLanguage: 'zh',
+      speedSliderData: ['0.5', '0.75', '1', '1.25', '1.5', '2'],
       showAlert: false, // 控制提示框显示状态
       alertMessage: '', // 存储提示消息
       volume: 100, // 音量值
       volumeSliderValue: 100, // 新增的音量滑块值
+      speedSliderValue: 1,
+      speed: 1,
       musicIndex: 0,
       isPlaying: false,
       currentSong: {},
@@ -231,6 +321,7 @@ export default {
     const savedLanguage = localStorage.getItem('language')
     if (savedLanguage) {
       this.$i18n.locale = savedLanguage // 设置初始语言
+      this.selectedLanguage = savedLanguage
     }
 
     // 从 localStorage 读取设置
@@ -238,6 +329,13 @@ export default {
     if (savedVolume) {
       this.volumeSliderValue = parseInt(savedVolume, 10) //转换成10进制整数
       this.updateVolume() // 更新音量
+    }
+
+    const savedSpeed = localStorage.getItem('speed')
+    if (savedSpeed) {
+      console.log(savedSpeed)
+      this.speedSliderValue = parseInt(savedSpeed, 10) //转换成10进制整数
+      this.updateSpeed()
     }
 
     const savedPlaybackMode = localStorage.getItem('playbackMode')
@@ -262,11 +360,12 @@ export default {
       const newUrl = `${window.location.origin}${window.location.pathname}docs`
       window.open(newUrl, '_blank')
     },
-    changeLanguage() {
-      const newLanguage = this.$i18n.locale === 'ja' ? 'zh' : 'ja' // 切换语言
+    changeLanguage(newLanguage) {
+      // const newLanguage = this.$i18n.locale === 'ja' ? 'zh' : 'ja' // 切换语言
       this.$i18n.locale = newLanguage // 更新当前语言
       this.$changeLanguage(newLanguage) // 调用全局方法切换语言
       localStorage.setItem('language', newLanguage) // 保存到本地存储
+      this.selectedLanguage = newLanguage
       this.showToast()
       this.alertMessage = this.$t('translation')
     },
@@ -314,10 +413,24 @@ export default {
         }
       }
     },
+    updateSpeed() {
+      if (this.sound) {
+        if (localStorage.getItem('speed') !== null) {
+          this.sound.rate(Number(localStorage.getItem('speed'))) // 设置音量
+        } else {
+          this.sound.rate(1) // 设置音量
+        }
+      }
+    },
     handleVolumeChange(value) {
       this.volumeSliderValue = value // 更新音量滑块值
       localStorage.setItem('volume', this.volumeSliderValue) // 保存滑块值到 localStorage
       this.updateVolume() // 调用更新音量的方法
+    },
+    handleSpeedChange(value) {
+      this.speedSliderValue = value // 更新播放速度滑块值
+      localStorage.setItem('speed', this.speedSliderValue) // 保存滑块值到 localStorage
+      this.updateSpeed() // 调用更新播放速度的方法
     },
     showMsgModal(Message) {
       this.errorMessage = Message
@@ -614,18 +727,18 @@ export default {
   justify-content: space-between; /* 均匀分布 */
 }
 
-.volume-control {
+.settings-control {
   display: flex; /* 使用 Flexbox 以确保图标和滑块在同一行 */
   align-items: center; /* 垂直居中对齐 */
-  width: 100%; /* 让容器宽度占满 */
+  min-width: 100%;
 }
 
-.volume-icon {
+.settings-icon {
   margin-right: 20px; /* 图标和滑块之间的间距 */
   font-size: 1.5em;
 }
 
-.volume-slider {
+.settings-slider {
   flex: 1; /* 让滑块占据剩余空间 */
 }
 
@@ -720,73 +833,38 @@ export default {
   color: #666666;
 }
 
-/* 外层 wrapper，负责整体垂直居中 */
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: transparent;
-  border-radius: 20px;
-}
-
-/* container 设置 */
-.container {
-  background-color: #e7e7e7;
-  height: 90vh; /* 不再额外添加上浮部分 */
-  width: 95vw;
-  border-radius: 20px;
-/*   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3); */
-  transition: all 0.5s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  max-height: 840px;
-  max-width: 460px;
-}
-
-/* 移动设备的 container 设置 */
-@media (max-width: 768px) {
-  .container {
-    max-height: 600px;
-    max-width: 360px;
-  }
-}
-
-/* 优化 player-img */
 .player-img {
   height: 35vh;
   width: 15vw;
   position: relative;
-  transform: translateY(-6vh); /* 图片上浮 */
+  top: -6vh;
+  transform: translateY(-2vh); /* 根据需要调整上移距离 */
+  /* 防止占据空间 */
   margin: auto auto -5vh;
 }
 
-/* 桌面设备的 player-img 设置 */
+/* 默认设置适用于桌面 */
 .player-img {
   min-width: 420px;
   min-height: 420px;
 }
 
-/* 移动设备的 player-img 设置 */
+/* 移动设备 */
 @media (max-width: 768px) {
+  /* 小于768px的设备 */
   .player-img {
     min-width: 320px;
     min-height: 320px;
   }
 }
 
-/* 图片样式 */
 .player-img img {
   object-fit: cover;
   border-radius: 20px;
   height: 0;
   width: 0;
   opacity: 0;
-  box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
 }
 
 .player-img:hover img {
@@ -800,13 +878,43 @@ export default {
   opacity: 1;
 }
 
+.container {
+  background-color: #e7e7e7;
+  height: 90vh;
+  width: 95vw;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  display: flex; /* 启用 Flexbox */
+  flex-direction: column;
+  justify-content: center; /* 水平居中 */
+  text-align: center;
+  margin: auto;
+  position: relative;
+  max-height: 840px; /* 最大高度 */
+  max-width: 460px; /* 最大宽度 */
+  /* min-width: 400px;
+  min-height: 680px; */
+  margin-top: 4vh;
+}
+
+/* 移动设备 */
+@media (max-width: 768px) {
+  /* 小于768px的设备 */
+  .container {
+    max-height: 600px; /* 最大高度 */
+    max-width: 360px; /* 最大宽度 */
+    /* min-width: 360px;
+    min-height: 600px; */
+  }
+}
 
 .label {
   margin-top: -2vh;
 }
 
 .container:hover {
-/*  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
 h2 {
@@ -821,5 +929,26 @@ h4 {
   text-align: center;
   font-weight: 500;
   margin-top: 10px;
+}
+
+.btn-custom {
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.btn-check:checked + .btn-outline-primary {
+  border-color: #3498db;
+  background-color: #3498db;
+}
+
+.btn-check:hover + .btn-outline-primary {
+  border-color: #2980b9;
+  color: #2980b9;
+}
+
+.modal-content-custom {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
 }
 </style>

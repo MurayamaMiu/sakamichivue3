@@ -16,8 +16,13 @@ self.addEventListener('fetch', event => {
           // 只缓存状态码为 200 的完整响应
           if (response.status === 200) {
             return caches.open('audio-cache').then(cache => {
-              cache.put(event.request, response.clone())
-              return response
+              if (
+                event.request.url.startsWith('http') ||
+                event.request.url.startsWith('https')
+              ) {
+                cache.put(event.request, response.clone())
+                return response
+              }
             })
           }
           return response // 如果不是 200 状态，直接返回响应

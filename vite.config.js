@@ -13,12 +13,13 @@ export default defineConfig({
     vue(),
     vueJsx(),
     VitePWA({
-      registerType: 'autoUpdate',  // 自动更新服务工作线程
+      registerType: 'autoUpdate', // 自动更新服务工作线程
       // includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  // 包括的文件
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => url.origin === 'https://murayamamiu.github.io',
+            urlPattern: ({ url }) =>
+              url.origin === 'https://murayamamiu.github.io',
             handler: 'CacheFirst',
           },
         ],
@@ -36,30 +37,34 @@ export default defineConfig({
           {
             src: 'icon/logo192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icon/logo512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
           },
-        ]
-      }
-    })
+        ],
+      },
+    }),
   ],
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+  },
   build: {
     rollupOptions: {
       input: {
         // eslint-disable-next-line no-undef
         main: resolve(__dirname, 'index.html'),
         // eslint-disable-next-line no-undef
-        docs: resolve(__dirname, 'public/docs/index.html')
-      }
-    }
+        docs: resolve(__dirname, 'public/docs/index.html'),
+      },
+    },
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 })
