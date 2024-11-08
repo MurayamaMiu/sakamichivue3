@@ -326,7 +326,7 @@ export default {
 @media (max-width: 768px) {
   .list-group {
     max-height: 85vh;
-    min-height: 70vh;
+    min-height: 85vh;
     max-width: 100vw;
   }
 }

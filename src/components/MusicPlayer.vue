@@ -231,7 +231,7 @@
                     for="btnradio2"
                     >English</label
                   >
-                  <input
+                  <!-- <input
                     type="radio"
                     class="btn-check btn-custom"
                     name="btnradio"
@@ -240,12 +240,12 @@
                     value="kr"
                     v-model="selectedLanguage"
                     autocomplete="off"
-                  />
-                  <label
+                  /> -->
+                  <!-- <label
                     class="btn btn-outline-primary btn-custom"
                     for="btnradio4"
                     >한국어</label
-                  >
+                  > -->
                 </div>
               </div>
             </div>
