@@ -833,42 +833,6 @@ export default {
   color: #666666;
 }
 
-/* 外层 wrapper，负责整体垂直居中 */
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: transparent;
-  border-radius: 20px;
-}
-
-/* container 设置 */
-.container {
-  background-color: #e7e7e7;
-  height: 90vh; /* 不再额外添加上浮部分 */
-  width: 95vw;
-  border-radius: 20px;
-/*   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3); */
-  transition: all 0.5s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  max-height: 840px;
-  max-width: 460px;
-}
-
-/* 移动设备的 container 设置 */
-@media (max-width: 768px) {
-  .container {
-    max-height: 620px;
-    max-width: 360px;
-  }
-}
-
 /* 优化 player-img */
 .player-img {
   height: 35vh;
