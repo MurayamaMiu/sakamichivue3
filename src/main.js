@@ -10,6 +10,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+import store from './store'
+
 import './assets/styles.scss'
 import './assets/modal.css'
 import i18n from './i18n'
@@ -19,6 +21,7 @@ const app = createApp(App)
 app.use(i18n)
 app.use(createPinia())
 app.use(router)
+app.use(store)
 
 // 更新 <title> 的函数
 const updateTitle = () => {
@@ -26,7 +29,7 @@ const updateTitle = () => {
 }
 
 // 设置初始语言
-const savedLanguage = localStorage.getItem('language') || 'ja'
+const savedLanguage = localStorage.getItem('language') || 'zh'
 i18n.global.locale = savedLanguage
 updateTitle() // 初始化时更新标题
 

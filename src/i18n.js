@@ -16,6 +16,29 @@ const messages = {
     nogizaka46: '乃木坂46',
     hinatazaka46: '日向坂46',
     keyakizaka46: '欅坂46',
+    shuffle: 'シャッフル再生',
+    repeatone: '1曲リピート',
+    repeat: 'リピート再生',
+    songlist: '曲リスト',
+    cancelloved: 'お気に入り解除',
+    loved: 'お気に入り追加',
+    pause: '一時停止',
+    play: '再生',
+    previous: '前の曲',
+    next: '次の曲',
+    search: '検索',
+    navbar: 'ナビゲーションバー',
+    home: 'ホーム',
+    wiki: 'ウィキ',
+    musicplayer: 'ミュージックプレイヤー',
+    hinatazaka46detail:
+      '日向坂46は日本の女性アイドルグループで、坂道シリーズに所属し、前身のひらがなけやき46から改名されました。このグループは、明るく前向きなイメージと独特の音楽スタイルで広く愛されています。',
+    sakurazaka46detail:
+      '櫻坂46は日本の女性アイドルグループで、坂道シリーズに所属し、2020年に結成されました。このグループは、その表現力豊かな音楽と独特のステージスタイルで多くのファンの支持を得ています。',
+    nogizaka46detail:
+      '乃木坂46は日本の女性アイドルグループで、坂道シリーズに所属し、2011年に結成されました。このグループは、優雅で冷徹なイメージと精緻な音楽作品で、日本国内外に広いファンベースを持っています。',
+    keyakizaka46detail:
+      '欅坂46は日本の女性アイドルグループで、坂道シリーズに所属し、2015年に結成されました。独特の音楽スタイルと衝撃的なダンスで、欅坂46は日本だけでなく、世界中で大きな注目と人気を集めました。',
   },
   zh: {
     placeholder: '請輸入',
@@ -32,6 +55,29 @@ const messages = {
     nogizaka46: '乃木坂46',
     hinatazaka46: '日向坂46',
     keyakizaka46: '欅坂46',
+    shuffle: '隨機播放',
+    repeatone: '單曲循環',
+    repeat: '循環播放',
+    songlist: '歌曲列表',
+    cancelloved: '取消收藏',
+    loved: '收藏歌曲',
+    pause: '暫停',
+    play: '播放',
+    previous: '上一曲',
+    next: '下一曲',
+    search: '檢索',
+    navbar: '導航欄',
+    home: '主頁',
+    wiki: '維基',
+    musicplayer: '音樂播放器',
+    hinatazaka46detail:
+      '日向坂46是日本的一個女子偶像團體，隸屬於阪道系列，由其前身平假名阪46改名而成。該團體以其陽光、積極的形象和獨特的音樂風格受到了廣泛的喜愛',
+    sakurazaka46detail:
+      '櫻坂46是日本女子偶像團體，隸屬於阪道系列，成立於2020年。該團體以其富有表現力的音樂和獨特的舞臺風格贏得了衆多粉絲的喜愛。',
+    nogizaka46detail:
+      '乃木坂46是日本的女子偶像團體，屬於阪道系列，成立於2011年。該團體以其優雅、高冷的形象和精緻的音樂作品在日本和國際上擁有廣泛的粉絲基礎。',
+    keyakizaka46detail:
+      '欅坂46是日本女子偶像團體，隸屬於阪道系列，成立於2015年。以其獨特的音樂風格和富有衝擊力的舞蹈，欅阪46迅速在日本乃至全球獲得了極大的關注和人氣。',
   },
   en: {
     placeholder: 'Please enter',
@@ -48,6 +94,29 @@ const messages = {
     nogizaka46: 'Nogizaka46',
     hinatazaka46: 'Hinatazaka46',
     keyakizaka46: 'Keyakizaka46',
+    shuffle: 'Shuffle',
+    repeatone: 'Repeat One',
+    repeat: 'Repeat All',
+    songlist: 'Song List',
+    cancelloved: 'Unfavorite',
+    loved: 'Favorite',
+    pause: 'Pause',
+    play: 'Play',
+    previous: 'Previous',
+    next: 'Next',
+    search: 'Search',
+    navbar: 'Navigation Bar',
+    home: 'Home',
+    wiki: 'Wiki',
+    musicplayer: 'MusicPlayer',
+    hinatazaka46detail:
+      'Hinatazaka46 is a Japanese female idol group belonging to the Sakurazaka series, formed by renaming its predecessor Hiragana Keyaki46. The group is widely loved for its bright and positive image, as well as its unique music style.',
+    sakurazaka46detail:
+      'Sakurazaka46 is a Japanese female idol group belonging to the Sakurazaka series, formed in 2020. The group has gained a large following due to its expressive music and unique stage style.',
+    nogizaka46detail:
+      'Nogizaka46 is a Japanese female idol group belonging to the Sakurazaka series, formed in 2011. Known for its elegant and cool image and exquisite music works, the group has a broad fan base both in Japan and internationally.',
+    keyakizaka46detail:
+      'Keyakizaka46 is a Japanese female idol group belonging to the Sakurazaka series, formed in 2015. With its unique music style and impactful dance moves, Keyakizaka46 quickly gained massive attention and popularity not only in Japan but around the world.',
   },
   kr: {
     placeholder: '입력해 주세요',

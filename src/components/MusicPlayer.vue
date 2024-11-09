@@ -65,58 +65,73 @@
     <div class="player-controls">
       <i
         class="fa-solid fa-backward"
-        title="Previous"
+        :title="$t('previous')"
         @click="changeMusic(-1)"
       ></i>
       <i
         class="fa-solid"
         :class="isPlaying ? 'fa-pause' : 'fa-play'"
-        title="Play"
+        :title="isPlaying ? $t('pause') : $t('play')"
         @click="togglePlay"
       ></i>
-      <i class="fa-solid fa-forward" title="Next" @click="changeMusic(1)"></i>
+      <i
+        class="fa-solid fa-forward"
+        :title="$t('next')"
+        @click="changeMusic(1)"
+      ></i>
     </div>
     <div class="settings-controls">
       <i
         v-if="playbackMode === 'repeat'"
+        :title="$t('repeat')"
         class="bi bi-repeat"
         @click="togglePlaybackMode"
       ></i>
       <i
         v-if="playbackMode === 'repeat-one'"
+        :title="$t('repeatone')"
         class="bi bi-repeat-1"
         @click="togglePlaybackMode"
       ></i>
       <i
         v-if="playbackMode === 'shuffle'"
+        :title="$t('shuffle')"
         class="bi bi-shuffle"
         @click="togglePlaybackMode"
       ></i>
       <i
-        v-if="isFavorited"
-        class="bi bi-bookmark-heart-fill"
-        @click="toggleFavorite"
-      ></i>
-      <i v-else class="bi bi-bookmark-heart" @click="toggleFavorite"></i>
-      <i
-        class="bi bi-sliders"
-        id="settingsIcon"
-        data-bs-toggle="modal"
-        data-bs-target="#settingsModal"
-      ></i>
-      <i
         class="bi bi-music-note-list"
+        :title="$t('songlist')"
         @click="$emit('toggleSongList')"
         style="cursor: pointer"
       ></i>
+      <i
+        v-if="isFavorited"
+        :title="$t('cancelloved')"
+        class="bi bi-bookmark-heart-fill"
+        @click="toggleFavorite"
+      ></i>
+      <i
+        v-else
+        class="bi bi-bookmark-heart"
+        :title="$t('loved')"
+        @click="toggleFavorite"
+      ></i>
+      <i
+        class="bi bi-sliders"
+        id="settingsIcon"
+        :title="$t('settings')"
+        data-bs-toggle="modal"
+        data-bs-target="#settingsModal"
+      ></i>
       <!--      <i class="bi bi-three-dots"></i>-->
-
+      <!--
       <i
         class="bi bi-journal-code"
         @click="goToDocs"
         @auxclick="goToDocsNewTab"
         style="cursor: pointer"
-      ></i>
+      ></i> -->
     </div>
     <!-- Modal -->
     <div
@@ -713,7 +728,8 @@ export default {
   top: 20px; /* 根据需要调整顶部距离 */
   right: 20px; /* 根据需要调整右侧距离 */
   z-index: 1050; /* 确保在其他内容上方 */
-  background-color: rgba(255, 255, 255, 0.7); /* 半透明白色 */
+  /* background-color: rgba(255, 255, 255, 1); 半透明白色 */
+  background-color: #e7e7e7;
   border-radius: 15px;
 }
 

@@ -1,210 +1,408 @@
 <template>
-  <div class="main-container">
-    <div
-      id="songlist"
-      class="app"
-      :class="{
-        show: showSongList,
-        'slide-left': isMobile,
-        'slide-right': !isMobile,
-      }"
-    >
-      <div class="offcanvas-header">
-        <button
-          type="button"
-          class="close"
-          v-if="isMobile"
-          @click="toggleSongList"
-          style="margin-left: auto"
-        >
-          <i
-            class="bi bi-x-square-fill"
-            style="color: #666666; font-size: 1.5em"
-          ></i>
-        </button>
-      </div>
-
-      <transition name="slide-fade">
-        <SongList
-          v-if="showSongList"
-          :currentSongId="currentSongId"
-          @selectSong="updateCurrentSongId"
-          @songChanged="playSong"
-        />
-      </transition>
-    </div>
-    <div id="app" class="app" style="flex: 6">
-      <MusicPlayer
-        :currentSongId="currentSongId"
-        @songChanged="updateCurrentSongId"
-        @toggleSongList="toggleSongList"
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path
+        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"
       />
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path
+        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+      />
+      <path
+        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+      />
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path
+        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+      />
+    </symbol>
+  </svg>
+
+  <!-- 根据 Vuex 中的 showNavbar 状态来控制 Navbar 的显示与隐藏 -->
+  <nav v-if="$store.state.showNavbar" class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img
+          src="/public/icon/logo512.png"
+          style="max-width: 35px; max-height: 35px; border-radius: 5px"
+          alt=""
+        />
+      </a>
+
+      <!-- <div
+        class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
+      >
+        <button
+          class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          data-bs-toggle="dropdown"
+          aria-label="Toggle theme (auto)"
+        >
+          <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
+            <use href="#circle-half"></use>
+          </svg>
+          <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-end shadow"
+          aria-labelledby="bd-theme-text"
+        >
+          <li>
+            <button
+              type="button"
+              class="dropdown-item d-flex align-items-center"
+              data-bs-theme-value="light"
+              aria-pressed="false"
+            >
+              <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                <use href="#sun-fill"></use>
+              </svg>
+              Light
+              <svg class="bi ms-auto d-none" width="1em" height="1em">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="dropdown-item d-flex align-items-center"
+              data-bs-theme-value="dark"
+              aria-pressed="false"
+            >
+              <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                <use href="#moon-stars-fill"></use>
+              </svg>
+              Dark
+              <svg class="bi ms-auto d-none" width="1em" height="1em">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="dropdown-item d-flex align-items-center active"
+              data-bs-theme-value="auto"
+              aria-pressed="true"
+            >
+              <svg class="bi me-2 opacity-50" width="1em" height="1em">
+                <use href="#circle-half"></use>
+              </svg>
+              Auto
+              <svg class="bi ms-auto d-none" width="1em" height="1em">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div> -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+            {{ $t('navbar') }}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">{{
+                $t('home')
+              }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sakamichivue3/musicplayer">{{
+                $t('musicplayer')
+              }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sakamichivue3/docs/index.html">{{
+                $t('wiki')
+              }}</a>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              :placeholder="$t('placeholder')"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              {{ $t('search') }}
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
+  </nav>
+  <router-view> </router-view>
 </template>
 
 <script>
-import '@fortawesome/fontawesome-free/css/all.css'
-import MusicPlayer from './components/MusicPlayer.vue'
-import SongList from '@/components/SongList.vue'
+// import { mapState } from 'vuex'
 
 export default {
-  components: {
-    MusicPlayer,
-    SongList,
-  },
-  data() {
-    return {
-      currentSongId: parseInt(localStorage.getItem('currentSongId'), 10) || 0,
-      showSongList: window.innerWidth > 768,
-    }
-  },
-  computed: {
-    isMobile() {
-      return window.innerWidth <= 768 // 判断是否为手机端
-    },
-  },
-  mounted() {
-    // 在组件挂载后，如果窗口大小改变，可以更新 showSongList
-    // window.addEventListener('resize', this.handleResize);
-    // window.addEventListener('scroll', this.preventScrollClose);
-    this.currentSongId = parseInt(localStorage.getItem('currentSongId'), 10)
-    // 在组件挂载时获取初始窗口高度
-    this.updateViewportHeight()
-
-    // 监听窗口大小变化
-    window.addEventListener('resize', this.updateViewportHeight)
-  },
-  beforeUnmount() {
-    // 在组件销毁前移除事件监听器
-    // window.removeEventListener('resize', this.handleResize);
-    // window.removeEventListener('scroll', this.preventScrollClose);
-    // 在组件销毁时移除事件监听器
-    window.removeEventListener('resize', this.updateViewportHeight)
-  },
-  methods: {
-    updateViewportHeight() {
-      // 获取浏览器的可视区域高度
-      const viewportHeight =
-        window.innerHeight ||
-        document.documentElement.clientHeight ||
-        document.body.clientHeight
-
-      // 将页面的高度设置为可视区域的高度
-      document.body.style.height = `${viewportHeight}px`
-    },
-    preventScrollClose(event) {
-      // 阻止默认的滚动行为，确保侧边栏不会因为滚动而关闭
-      event.preventDefault()
-      event.stopPropagation()
-    },
-    handleResize() {
-      this.showSongList = window.innerWidth > 768 // 更新 showSongList
-    },
-    updateCurrentSongId(songId) {
-      this.currentSongId = songId
-      localStorage.setItem('currentSongId', songId)
-      this.$emit('songChanged', songId)
-    },
-    playSong(songId) {
-      const song = this.songs.find(s => s.id === songId)
-      if (song) {
-        this.loadMusic(song)
-      } else {
-        console.warn(`未找到 ID 为 ${songId} 的歌曲`)
-      }
-      localStorage.setItem('currentSongId', songId)
-    },
-    toggleSongList() {
-      this.showSongList = !this.showSongList
-    },
-  },
+  // computed: {
+  //   ...mapState(['setShowNavbar']),
+  // },
 }
 </script>
+<!-- <script>
+/*!
+ * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2011-2024 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ */
+
+;(() => {
+  'use strict'
+
+  const getStoredTheme = () => localStorage.getItem('theme')
+  const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+  const getPreferredTheme = () => {
+    const storedTheme = getStoredTheme()
+    if (storedTheme) {
+      return storedTheme
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  }
+
+  const setTheme = theme => {
+    if (theme === 'auto') {
+      document.documentElement.setAttribute(
+        'data-bs-theme',
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light',
+      )
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+  }
+
+  setTheme(getPreferredTheme())
+
+  const showActiveTheme = (theme, focus = false) => {
+    const themeSwitcher = document.querySelector('#bd-theme')
+
+    if (!themeSwitcher) {
+      return
+    }
+
+    const themeSwitcherText = document.querySelector('#bd-theme-text')
+    const activeThemeIcon = document.querySelector('.theme-icon-active use')
+    const btnToActive = document.querySelector(
+      `[data-bs-theme-value="${theme}"]`,
+    )
+    const svgOfActiveBtn = btnToActive
+      .querySelector('svg use')
+      .getAttribute('href')
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+      element.classList.remove('active')
+      element.setAttribute('aria-pressed', 'false')
+    })
+
+    btnToActive.classList.add('active')
+    btnToActive.setAttribute('aria-pressed', 'true')
+    activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+    themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+
+    if (focus) {
+      themeSwitcher.focus()
+    }
+  }
+
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', () => {
+      const storedTheme = getStoredTheme()
+      if (storedTheme !== 'light' && storedTheme !== 'dark') {
+        setTheme(getPreferredTheme())
+      }
+    })
+
+  window.addEventListener('DOMContentLoaded', () => {
+    showActiveTheme(getPreferredTheme())
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const theme = toggle.getAttribute('data-bs-theme-value')
+        setStoredTheme(theme)
+        setTheme(theme)
+        showActiveTheme(theme, true)
+      })
+    })
+  })
+})()
+</script> -->
 
 <style scoped>
-@import './assets/font/font.css';
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
-.main-container {
-  display: flex;
-  transition: all 0.5s ease;
-  height: 100%;
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
   width: 100%;
-  margin: 0;
-  padding: 0;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow:
+    inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
 }
 
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease;
-}
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
 }
 
-#songlist {
+.bi {
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+.navbar {
   position: fixed;
   top: 0;
-  bottom: 0;
-  background-color: white;
-  z-index: 1000;
-  transition: transform 0.5s ease; /* 为 transform 添加过渡动画 */
+  width: 100%;
+  max-height: 0vh;
+  background-color: transparent !important;
 }
 
-#songlist.show {
-  transform: translateX(0);
+/*
+ * Globals
+ */
+
+/* Custom default button */
+.btn-light,
+.btn-light:hover,
+.btn-light:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
 }
 
-.app {
-  font-family: 'PingFangTC-Medium', serif;
-  font-weight: 400;
+/*
+ * Base structure
+ */
+
+body {
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 
-/* 手机端样式 */
-@media (max-width: 768px) {
-  #songlist {
-    left: 0;
-    width: 100%;
-    transform: translateX(-100%); /* 从左侧进入 */
-  }
-
-  #songlist.show {
-    transform: translateX(0); /* 打开时从左侧滑入 */
-  }
-
-  .offcanvas-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .close {
-    border: none;
-    background: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
+.cover-container {
+  max-width: 42em;
 }
 
-/* 桌面端样式 */
-@media (min-width: 769px) {
-  #songlist {
-    right: 0;
-    max-width: 500px; /* 桌面端宽度不全屏 */
-    transform: translateX(100%); /* 从右侧进入 */
-  }
+/*
+ * Header
+ */
 
-  #songlist.show {
-    transform: translateX(0); /* 打开时从右侧滑入 */
-  }
+.nav-masthead .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 0.25rem solid transparent;
+}
 
-  .close {
-    display: none; /* 在桌面端隐藏关闭按钮 */
-  }
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
 }
 </style>

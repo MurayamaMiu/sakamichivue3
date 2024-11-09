@@ -13,7 +13,8 @@
 }
 
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.7); /* 半透明白色 */
+  /* background-color: rgba(255, 255, 255, 1); 半透明白色 */
+  background-color: #e7e7e7;
   border-radius: 15px;
 }
 

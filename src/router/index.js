@@ -1,13 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import MusicPlayerView from '../views/MusicPlayerView.vue'
+import IndexView from '@/views/IndexView.vue'
+import SongList from '@/components/SongList.vue'
+import MusicPlayer from '@/components/MusicPlayer.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView,
+      name: 'index',
+      component: IndexView,
+    },
+    {
+      path: '/musicplayer',
+      name: 'musicplayer',
+      component: MusicPlayerView,
+      children: [
+        {
+          path: '',
+          components: {
+            songlist: SongList,
+            player: MusicPlayer,
+          },
+        },
+      ],
     },
     {
       path: '/docs',

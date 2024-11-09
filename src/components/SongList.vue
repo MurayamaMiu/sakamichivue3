@@ -21,6 +21,7 @@
           class="btn btn-outline-secondary search"
           type="button"
           id="button-addon2"
+          :title="$t('search')"
           @click="filterSongs"
         >
           <i class="bi bi-search"></i>
