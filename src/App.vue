@@ -28,7 +28,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <img
-          src="/public/icon/logo512.png"
+          src="/icon/logo512.png"
           style="max-width: 35px; max-height: 35px; border-radius: 5px"
           alt=""
         />
@@ -133,12 +133,12 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">{{
+              <a class="nav-link active" aria-current="page" href="./">{{
                 $t('home')
               }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/sakamichivue3/musicplayer">{{
+              <a class="nav-link" href="./musicplayer">{{
                 $t('musicplayer')
               }}</a>
             </li>

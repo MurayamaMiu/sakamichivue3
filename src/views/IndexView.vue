@@ -38,44 +38,28 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img
-            src="/public/image/hinatazaka46.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
+          <img src="/image/hinatazaka46.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ $t('hinatazaka46') }}</h5>
             <p>{{ $t('hinatazaka46detail') }}</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img
-            src="/public/image/nogizaka46.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
+          <img src="/image/nogizaka46.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ $t('nogizaka46') }}</h5>
             <p>{{ $t('nogizaka46detail') }}</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img
-            src="/public/image/sakurazaka46.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
+          <img src="/image/sakurazaka46.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ $t('sakurazaka46') }}</h5>
             <p>{{ $t('sakurazaka46detail') }}</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img
-            src="/public/image/keyakizaka46.png"
-            class="d-block w-100"
-            alt="..."
-          />
+          <img src="/image/keyakizaka46.png" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ $t('keyakizaka46') }}</h5>
             <p>{{ $t('keyakizaka46detail') }}</p>

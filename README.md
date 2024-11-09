@@ -1,7 +1,7 @@
-WebMusicPlayerVue3
+# WebMusicPlayerVue3
 プロジェクトのセットアップ
-npm install
+## npm install
 開発のためのコンパイルとホットリロード
-npm run dev
+## npm run dev
 コンパイルとミニファイによる本番稼働環境への移行
-npm run build
+## npm run build
