@@ -18,14 +18,6 @@
     },
     {
       "id": 3,
-      "path": "music/櫻坂46/ドローン旋回中.mp3",
-      "lrcPath": "music/櫻坂46/ドローン旋回中.lrc",
-      "displayName": "ドローン旋回中",
-      "cover": "image/ドローン旋回中.jpg",
-      "artist": "櫻坂46"
-    },
-    {
-      "id": 4,
       "path": "music/Others/メラメラ.mp3",
       "lrcPath": "music/Others/メラメラ.lrc",
       "displayName": "メラメラ",
@@ -33,7 +25,7 @@
       "artist": "ARCANA_PROJECT"
     },
     {
-      "id": 5,
+      "id": 4,
       "path": "music/Others/忘れてください.mp3",
       "lrcPath": "music/Others/忘れてください.lrc",
       "displayName": "忘れてください",
@@ -41,7 +33,7 @@
       "artist": "ヨルシカ"
     },
     {
-      "id": 6,
+      "id": 5,
       "path": "music/Others/桜の木の下.mp3",
       "lrcPath": "music/Others/桜の木の下.lrc",
       "displayName": "桜の木の下",
@@ -49,7 +41,7 @@
       "artist": "MACO"
     },
     {
-      "id": 7,
+      "id": 6,
       "path": "music/Others/風になる.mp3",
       "lrcPath": "music/Others/風になる.lrc",
       "displayName": "風になる",
@@ -57,7 +49,7 @@
       "artist": "つじあやの"
     },
     {
-      "id": 8,
+      "id": 7,
       "path": "music/乃木坂46/STAR..MP3",
       "lrcPath": "music/乃木坂46/STAR..MP3",
       "displayName": "STAR.",
@@ -65,11 +57,19 @@
       "artist": "乃木坂46"
     },
     {
-      "id": 9,
+      "id": 8,
       "path": "music/乃木坂46/乃木坂46-OVERTURE.mp3",
       "lrcPath": "music/乃木坂46/乃木坂46-OVERTURE.lrc",
       "displayName": "OVERTURE",
       "cover": "image/乃木坂46-OVERTURE.jpg",
+      "artist": "乃木坂46"
+    },
+    {
+      "id": 9,
+      "path": "music/乃木坂46/乃木坂46-歩道橋.mp3",
+      "lrcPath": "music/乃木坂46/乃木坂46-歩道橋.lrc",
+      "displayName": "歩道橋",
+      "cover": "image/乃木坂46-歩道橋.jpg",
       "artist": "乃木坂46"
     },
     {
@@ -250,14 +250,6 @@
     },
     {
       "id": 32,
-      "path": "music/櫻坂46/ピッカーン！.mp3",
-      "lrcPath": "music/櫻坂46/ピッカーン！.lrc",
-      "displayName": "ピッカーン！",
-      "cover": "image/ピッカーン！.jpg",
-      "artist": "櫻坂46"
-    },
-    {
-      "id": 33,
       "path": "music/櫻坂46/櫻坂46 - I want tomorrow to come.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46 - I want tomorrow to come.lrc",
       "displayName": "I want tomorrow to come",
@@ -265,7 +257,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 34,
+      "id": 33,
       "path": "music/櫻坂46/櫻坂46 - 本質的なこと.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46 - 本質的なこと.lrc",
       "displayName": "本質的なこと",
@@ -273,7 +265,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 35,
+      "id": 34,
       "path": "music/櫻坂46/櫻坂46-BAN.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-BAN.lrc",
       "displayName": "BAN",
@@ -281,7 +273,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 36,
+      "id": 35,
       "path": "music/櫻坂46/櫻坂46-Dead end.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-Dead end.lrc",
       "displayName": "Dead end",
@@ -289,7 +281,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 37,
+      "id": 36,
       "path": "music/櫻坂46/櫻坂46-I’m in.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-I’m in.lrc",
       "displayName": "I’m in",
@@ -297,7 +289,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 38,
+      "id": 37,
       "path": "music/櫻坂46/櫻坂46-Overture.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-Overture.lrc",
       "displayName": "Overture",
@@ -305,7 +297,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 39,
+      "id": 38,
       "path": "music/櫻坂46/櫻坂46-TOKYO SNOW.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-TOKYO SNOW.lrc",
       "displayName": "TOKYO SNOW",
@@ -313,7 +305,23 @@
       "artist": "櫻坂46"
     },
     {
+      "id": 39,
+      "path": "music/櫻坂46/櫻坂46-ドローン旋回中.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-ドローン旋回中.lrc",
+      "displayName": "ドローン旋回中",
+      "cover": "image/櫻坂46-ドローン旋回中.jpg",
+      "artist": "櫻坂46"
+    },
+    {
       "id": 40,
+      "path": "music/櫻坂46/櫻坂46-ピッカーン！.mp3",
+      "lrcPath": "music/櫻坂46/櫻坂46-ピッカーン！.lrc",
+      "displayName": "ピッカーン！",
+      "cover": "image/櫻坂46-ピッカーン！.jpg",
+      "artist": "櫻坂46"
+    },
+    {
+      "id": 41,
       "path": "music/櫻坂46/櫻坂46-僕は僕を好きになれない.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-僕は僕を好きになれない.lrc",
       "displayName": "僕は僕を好きになれない",
@@ -321,7 +329,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 41,
+      "id": 42,
       "path": "music/櫻坂46/櫻坂46-君がサヨナラ言えたって.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-君がサヨナラ言えたって.lrc",
       "displayName": "君がサヨナラ言えたって",
@@ -329,7 +337,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 42,
+      "id": 43,
       "path": "music/櫻坂46/櫻坂46-夏の近道.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-夏の近道.lrc",
       "displayName": "夏の近道",
@@ -337,7 +345,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 43,
+      "id": 44,
       "path": "music/櫻坂46/櫻坂46-断絶.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-断絶.lrc",
       "displayName": "断絶",
@@ -345,7 +353,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 44,
+      "id": 45,
       "path": "music/櫻坂46/櫻坂46-条件反射で泣けて来る.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-条件反射で泣けて来る.lrc",
       "displayName": "条件反射で泣けて来る",
@@ -353,7 +361,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 45,
+      "id": 46,
       "path": "music/櫻坂46/櫻坂46-自業自得.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-自業自得.lrc",
       "displayName": "自業自得",
@@ -361,7 +369,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 46,
+      "id": 47,
       "path": "music/櫻坂46/櫻坂46-静寂の暴力.mp3",
       "lrcPath": "music/櫻坂46/櫻坂46-静寂の暴力.lrc",
       "displayName": "静寂の暴力",
@@ -369,7 +377,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 47,
+      "id": 48,
       "path": "music/櫻坂46/璃花酱，尚未完成！.mp3",
       "lrcPath": "music/櫻坂46/璃花酱，尚未完成！.lrc",
       "displayName": "璃花酱，尚未完成！",
@@ -377,7 +385,7 @@
       "artist": "櫻坂46"
     },
     {
-      "id": 48,
+      "id": 49,
       "path": "music/欅坂46/欅坂46 - W-KEYAKIZAKAの詩.mp3",
       "lrcPath": "music/欅坂46/欅坂46 - W-KEYAKIZAKAの詩.lrc",
       "displayName": "W-KEYAKIZAKAの詩",
@@ -385,7 +393,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 49,
+      "id": 50,
       "path": "music/欅坂46/欅坂46 - 誰がその鐘を鳴らすのか？.mp3",
       "lrcPath": "music/欅坂46/欅坂46 - 誰がその鐘を鳴らすのか？.lrc",
       "displayName": "誰がその鐘を鳴らすのか？",
@@ -393,7 +401,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 50,
+      "id": 51,
       "path": "music/欅坂46/欅坂46-Overture.mp3",
       "lrcPath": "music/欅坂46/欅坂46-Overture.lrc",
       "displayName": "Overture",
@@ -401,7 +409,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 51,
+      "id": 52,
       "path": "music/欅坂46/欅坂46-不協和音.mp3",
       "lrcPath": "music/欅坂46/欅坂46-不協和音.lrc",
       "displayName": "不協和音",
@@ -409,7 +417,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 52,
+      "id": 53,
       "path": "music/欅坂46/欅坂46-世界には愛しかない.mp3",
       "lrcPath": "music/欅坂46/欅坂46-世界には愛しかない.lrc",
       "displayName": "世界には愛しかない",
@@ -417,7 +425,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 53,
+      "id": 54,
       "path": "music/欅坂46/欅坂46-二人セゾン.mp3",
       "lrcPath": "music/欅坂46/欅坂46-二人セゾン.lrc",
       "displayName": "二人セゾン",
@@ -425,7 +433,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 54,
+      "id": 55,
       "path": "music/欅坂46/欅坂46-僕たちは付き合っている.mp3",
       "lrcPath": "music/欅坂46/欅坂46-僕たちは付き合っている.lrc",
       "displayName": "僕たちは付き合っている",
@@ -433,7 +441,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 55,
+      "id": 56,
       "path": "music/欅坂46/欅坂46-半分の記憶.mp3",
       "lrcPath": "music/欅坂46/欅坂46-半分の記憶.lrc",
       "displayName": "半分の記憶",
@@ -441,7 +449,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 56,
+      "id": 57,
       "path": "music/欅坂46/欅坂46-東京タワーはどこから見える？.mp3",
       "lrcPath": "music/欅坂46/欅坂46-東京タワーはどこから見える？.lrc",
       "displayName": "東京タワーはどこから見える？",
@@ -449,7 +457,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 57,
+      "id": 58,
       "path": "music/欅坂46/欅坂46-渋谷川.mp3",
       "lrcPath": "music/欅坂46/欅坂46-渋谷川.lrc",
       "displayName": "渋谷川",
@@ -457,7 +465,7 @@
       "artist": "欅坂46"
     },
     {
-      "id": 58,
+      "id": 59,
       "path": "music/欅坂46/欅坂46-黒い羊.mp3",
       "lrcPath": "music/欅坂46/欅坂46-黒い羊.lrc",
       "displayName": "黒い羊",
