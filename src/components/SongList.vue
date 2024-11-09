@@ -31,9 +31,14 @@
 
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" data-bs-toggle="tab" href="#all-songs"
-          >{{ $t('allsong') }}
-        </a>
+        <a
+          class="nav-link"
+          data-bs-toggle="tab"
+          href="#all-songs"
+          :class="{ active: activeTab === 'all-songs' }"
+          @click="switchTab('all-songs')"
+          >{{ $t('allsong') }}</a
+        >
       </li>
 
       <li class="nav-item">
@@ -41,9 +46,10 @@
           class="nav-link"
           data-bs-toggle="tab"
           href="#favorited-songs"
+          :class="{ active: activeTab === 'favorited-songs' }"
           @click="switchTab('favorited-songs')"
-          >{{ $t('lovedsong') }}
-        </a>
+          >{{ $t('lovedsong') }}</a
+        >
       </li>
 
       <li class="nav-item">
@@ -51,6 +57,7 @@
           class="nav-link sakurazaka"
           data-bs-toggle="tab"
           href="#favorited-songs"
+          :class="{ active: activeTab === 'sakurazaka' }"
           @click="switchTab('sakurazaka')"
           >{{ $t('sakurazaka46') }}</a
         >
@@ -61,6 +68,7 @@
           class="nav-link nogizaka"
           data-bs-toggle="tab"
           href="#favorited-songs"
+          :class="{ active: activeTab === 'nogizaka' }"
           @click="switchTab('nogizaka')"
           >{{ $t('nogizaka46') }}</a
         >
@@ -71,6 +79,7 @@
           class="nav-link hinatazaka"
           data-bs-toggle="tab"
           href="#favorited-songs"
+          :class="{ active: activeTab === 'hinatazaka' }"
           @click="switchTab('hinatazaka')"
           >{{ $t('hinatazaka46') }}</a
         >
@@ -81,8 +90,20 @@
           class="nav-link keyakizaka"
           data-bs-toggle="tab"
           href="#favorited-songs"
+          :class="{ active: activeTab === 'keyakizaka' }"
           @click="switchTab('keyakizaka')"
           >{{ $t('keyakizaka46') }}</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link others"
+          data-bs-toggle="tab"
+          href="#favorited-songs"
+          :class="{ active: activeTab === 'others' }"
+          @click="switchTab('others')"
+          >{{ $t('others') }}</a
         >
       </li>
     </ul>
@@ -144,6 +165,8 @@ export default {
   },
   data() {
     return {
+      // 从 localStorage 获取已保存的 tab，若没有则使用默认值
+      activeTab: localStorage.getItem('activeTab') || 'all-songs',
       songs: [], // 用于存放歌曲信息
       favoritedSongs: [], // 用于存放收藏的歌曲信息
       searchQuery: '', // 用于存放搜索框的文本
@@ -151,16 +174,24 @@ export default {
     }
   },
   mounted() {
+    // 页面加载时检查 localStorage 是否有选中的 tab，并设置相应的 class
+    const savedTab = localStorage.getItem('activeTab')
+    if (savedTab) {
+      this.activeTab = savedTab
+    }
+
     this.fetchSongs() // 组件挂载后加载歌曲信息
     this.loadFavoritedSongs() // 加载收藏歌曲
   },
   methods: {
     switchTab(tab) {
+      this.activeTab = tab
       if (tab === 'favorited-songs') {
         this.loadFavoritedSongs()
       } else {
         this.loadGroupSongs(tab) // 直接调用加载组歌曲的方法
       }
+      localStorage.setItem('activeTab', tab) // 将选中的 tab 存储到 localStorage
     },
     async fetchSongs() {
       try {
@@ -185,10 +216,20 @@ export default {
         nogizaka: '乃木坂46',
         hinatazaka: '日向坂46',
         keyakizaka: '欅坂46',
+        others: '', // 对应的是除上述四个歌手之外的其他歌曲
       }
-      this.favoritedSongs = this.songs.filter(
-        song => song.artist === groupArtists[group],
-      )
+
+      if (group === 'others') {
+        // 如果是 'others'，过滤出歌手不在上述四个歌手中的歌曲
+        this.favoritedSongs = this.songs.filter(
+          song => !Object.values(groupArtists).includes(song.artist),
+        )
+      } else {
+        // 否则，按照具体的团体筛选歌曲
+        this.favoritedSongs = this.songs.filter(
+          song => song.artist === groupArtists[group],
+        )
+      }
     },
     filterSongs() {
       const query = this.searchQuery.toLowerCase()
@@ -206,6 +247,17 @@ export default {
 </script>
 
 <style scoped>
+/* 其他歌手 标签 */
+.nav-link.others {
+  color: #bb002c !important; /* 未选中时的颜色 */
+}
+
+.nav-link.others.active {
+  color: whitesmoke !important; /* 选中时的颜色 */
+  background-color: #bb002c !important;
+  border-color: #bb002c !important;
+}
+
 /* 櫻坂46 标签 */
 .nav-link.sakurazaka {
   color: #f0a1b5 !important; /* 未选中时的颜色 */

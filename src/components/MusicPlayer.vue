@@ -3,9 +3,15 @@
     <img :src="currentSong.cover" id="bg-img" />
   </div>
   <div class="container">
-    <div class="player-img">
-      <img :src="currentSong.cover" class="active" id="cover" />
+    <div :class="['player-img', { 'circular-rotate': isCircularRotate }]">
+      <img
+        :src="currentSong.cover"
+        :style="{ animationPlayState: isPlaying ? 'running' : 'paused' }"
+        class="active"
+        id="cover"
+      />
     </div>
+
     <div class="label">
       <h2>{{ currentSong.displayName }}</h2>
       <h4>{{ currentSong.artist }}</h4>
@@ -195,6 +201,48 @@
                 />
               </div>
               <div class="settings-control" style="margin-top: 30px">
+                <i class="bi bi-disc settings-icon"></i>
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic radio toggle button group"
+                >
+                  <!-- 默认样式按钮 -->
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="btnradio11"
+                    id="btnradio11"
+                    autocomplete="off"
+                    :checked="!isCircularRotate"
+                    @click="setStyleCircularRotate(false)"
+                  />
+                  <label
+                    class="btn btn-outline-primary btn-custom"
+                    for="btnradio11"
+                  >
+                    {{ $t('default') }}
+                  </label>
+                  <!-- 封面旋转按钮 -->
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="btnradio11"
+                    id="btnradio12"
+                    autocomplete="off"
+                    :checked="isCircularRotate"
+                    @click="setStyleCircularRotate(true)"
+                  />
+                  <label
+                    class="btn btn-outline-primary btn-custom"
+                    for="btnradio12"
+                  >
+                    {{ $t('spin') }}
+                  </label>
+                </div>
+              </div>
+
+              <div class="settings-control" style="margin-top: 15px">
                 <i class="bi bi-translate settings-icon"></i>
                 <div
                   class="btn-group"
@@ -290,6 +338,7 @@ export default {
   },
   data() {
     return {
+      isCircularRotate: false, // 歌曲封面默认样式
       selectedLanguage: 'zh',
       speedSliderData: ['0.5', '0.75', '1', '1.25', '1.5', '2'],
       showAlert: false, // 控制提示框显示状态
@@ -333,6 +382,12 @@ export default {
       })
     }
 
+    // 加载页面时从 localStorage 获取保存的封面样式状态
+    const savedStyle = localStorage.getItem('isCircularRotate')
+    if (savedStyle !== null) {
+      this.isCircularRotate = JSON.parse(savedStyle)
+    }
+
     const savedLanguage = localStorage.getItem('language')
     if (savedLanguage) {
       this.$i18n.locale = savedLanguage // 设置初始语言
@@ -364,6 +419,11 @@ export default {
     this.fetchSongs()
   },
   methods: {
+    setStyleCircularRotate(isCircular) {
+      this.isCircularRotate = isCircular
+      // 将当前样式保存到 localStorage
+      localStorage.setItem('isCircularRotate', JSON.stringify(isCircular))
+    },
     goToDocs(event) {
       // 左键点击：在当前标签页跳转
       event.preventDefault()
@@ -610,18 +670,39 @@ export default {
       this.isFavorited = this.favoritedSongs.includes(currentSongId)
     },
     parseLyrics(data) {
-      this.lyricsArray = data
-        .split('\n')
-        .map(line => {
-          const match = line.match(/\[(\d+):(\d+\.\d+)\](.+)/)
-          if (match) {
-            const time = parseInt(match[1]) * 60 + parseFloat(match[2])
-            const [japanese, chinese] = match[3].trim().split('  ')
-            return { time, japanese, chinese }
+      const lines = data.split('\n')
+      this.lyricsArray = []
+
+      for (let i = 0; i < lines.length; i++) {
+        const currentLine = lines[i].trim()
+        const nextLine = lines[i + 1] ? lines[i + 1].trim() : null
+
+        // 匹配时间戳和歌词内容
+        const currentMatch = currentLine.match(/\[(\d+):(\d+\.\d+)\](.+)/)
+        const nextMatch = nextLine
+          ? nextLine.match(/\[(\d+):(\d+\.\d+)\](.+)/)
+          : null
+
+        if (currentMatch) {
+          const time =
+            parseInt(currentMatch[1]) * 60 + parseFloat(currentMatch[2])
+          const japanese = currentMatch[3].trim()
+
+          if (
+            nextMatch &&
+            currentMatch[1] === nextMatch[1] &&
+            currentMatch[2] === nextMatch[2]
+          ) {
+            // 当前行和下一行时间戳相同，视为日文和翻译配对
+            const chinese = nextMatch[3].trim()
+            this.lyricsArray.push({ time, japanese, chinese })
+            i++ // 跳过已处理的下一行
+          } else {
+            // 没有配对的行，仅显示日文或单行内容
+            this.lyricsArray.push({ time, japanese, chinese: null })
           }
-          return null
-        })
-        .filter(Boolean)
+        }
+      }
     },
     changeMusic(direction) {
       if (this.playbackMode === 'shuffle') {
@@ -849,50 +930,81 @@ export default {
   color: #666666;
 }
 
-/* 优化 player-img */
 .player-img {
   height: 35vh;
   width: 15vw;
   position: relative;
   top: -6vh;
-  transform: translateY(-2vh); /* 根据需要调整上移距离 */
-  /* 防止占据空间 */
+  transform: translateY(-2vh); /* 图片浮动 */
   margin: auto auto -5vh;
-}
-
-/* 默认设置适用于桌面 */
-.player-img {
   min-width: 420px;
   min-height: 420px;
+  /* 移除 overflow: hidden; 不再裁剪阴影 */
+  border-radius: 20px; /* 默认圆角 */
 }
 
-/* 移动设备 */
 @media (max-width: 768px) {
-  /* 小于768px的设备 */
   .player-img {
     min-width: 320px;
     min-height: 320px;
   }
 }
 
-.player-img img {
-  object-fit: cover;
-  border-radius: 20px;
-  height: 0;
-  width: 0;
-  opacity: 0;
-  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+/* 阴影效果移到 ::before 伪元素中 */
+.player-img::before {
+  content: '';
+  position: absolute;
+  top: -5px; /* 微调阴影位置 */
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: inherit; /* 继承父元素的 border-radius */
+  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+  pointer-events: none; /* 禁止伪元素响应鼠标事件 */
+  z-index: 1; /* 阴影在图片下方 */
+  transition: all 0.3s ease; /* 阴影平滑过渡 */
 }
 
-.player-img:hover img {
-  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.8);
+/* 当图片变成圆形时，确保阴影也跟着变圆 */
+.player-img.circular-rotate::before {
+  border-radius: 50%; /* 与图片保持一致，变成圆形 */
+}
+
+/* 图片样式 */
+.player-img img {
+  object-fit: cover;
+  border-radius: 20px; /* 默认圆角 */
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  transform: scale(0.85);
 }
 
 .player-img img.active {
-  width: 100%;
-  height: 100%;
-  transition: all 0.5s;
   opacity: 1;
+}
+
+.player-img.circular-rotate img {
+  border-radius: 50%; /* 圆形图片 */
+  transform-origin: center center; /* 确保旋转时图片的圆心不变 */
+  transition: transform 1s ease-in-out; /* 旋转平滑过渡 */
+  animation: rotate 20s linear infinite;
+  animation-play-state: paused; /* 默认暂停旋转 */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) scale(0.85);
+  }
+  to {
+    transform: rotate(360deg) scale(0.85);
+  }
+}
+
+/* Hover 状态下图片的阴影 */
+.player-img:hover::before {
+  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.8);
 }
 
 .container {

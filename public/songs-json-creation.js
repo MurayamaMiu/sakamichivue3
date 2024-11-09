@@ -32,8 +32,14 @@ const saveSongsInfo = async (dir) => {
         const artist = metadata.common.artist || "Unknown Artist";
         const displayName = basename(item, extname(item)).replace(artist, '').replace('-','').trim();
 
+        let path;
         // 定义各路径
-        const path = `music/${artist}/${basename(itemPath)}`;
+        if (artist==='櫻坂46'||artist==='乃木坂46'||artist==='日向坂46'||artist==='欅坂46') {
+           path = `music/${artist}/${basename(itemPath)}`;
+        }else{
+          path = `music/Others/${basename(itemPath)}`;
+        }
+
         const lrcPath = path.replace('.mp3', '.lrc');
         const cover = `image/${basename(item, extname(item))}.jpg`;
 
