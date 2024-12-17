@@ -17,9 +17,9 @@ body {
 .background {
   position: fixed;
   width: 200%;
-  height: 100%;
-  /* top: -50%; */
-  /* left: -50%; */
+  height: 200%;
+  top: -50%;
+  left: -50%;
   z-index: -1;
 }
 
@@ -36,3 +36,4 @@ body {
   -webkit-filter: blur(50px);
   transform: scale(1.1);
 }
+
