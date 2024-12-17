@@ -26,13 +26,13 @@
   <!-- 根据 Vuex 中的 showNavbar 状态来控制 Navbar 的显示与隐藏 -->
   <nav v-if="$store.state.showNavbar" class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
+      <!-- <a class="navbar-brand" href="/">
         <img
           src="/icon/logo512.png"
           style="max-width: 35px; max-height: 35px; border-radius: 5px"
           alt=""
         />
-      </a>
+      </a> -->
 
       <!-- <div
         class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
@@ -104,7 +104,7 @@
           </li>
         </ul>
       </div> -->
-      <button
+      <!-- <button
         class="navbar-toggler"
         type="button"
         data-bs-toggle="offcanvas"
@@ -112,7 +112,7 @@
         aria-controls="offcanvasNavbar"
       >
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
       <div
         class="offcanvas offcanvas-end"
         tabindex="-1"
