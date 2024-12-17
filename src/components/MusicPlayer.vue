@@ -1031,7 +1031,7 @@ export default {
 @media (max-width: 768px) {
   /* 小于768px的设备 */
   .container {
-    max-height: 600px; /* 最大高度 */
+    max-height: 550px; /* 最大高度 */
     max-width: 360px; /* 最大宽度 */
     /* min-width: 360px;
     min-height: 600px; */
