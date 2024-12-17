@@ -935,7 +935,7 @@ export default {
   width: 15vw;
   position: relative;
   top: -6vh;
-  transform: translateY(-2vh); /* 图片浮动 */
+  transform: translateY(-3vh); /* 图片浮动 */
   margin: auto auto -5vh;
   min-width: 420px;
   min-height: 420px;
@@ -947,6 +947,7 @@ export default {
   .player-img {
     min-width: 320px;
     min-height: 320px;
+    transform: translateY(-2vh); /* 图片浮动 */
   }
 }
 
@@ -978,7 +979,7 @@ export default {
   height: 100%;
   opacity: 0;
   transition: all 0.5s;
-  transform: scale(0.85);
+  transform: scale(0.98);
 }
 
 .player-img img.active {
@@ -995,10 +996,10 @@ export default {
 
 @keyframes rotate {
   from {
-    transform: rotate(0deg) scale(0.85);
+    transform: rotate(0deg) scale(0.98);
   }
   to {
-    transform: rotate(360deg) scale(0.85);
+    transform: rotate(360deg) scale(0.98);
   }
 }
 
@@ -1024,14 +1025,14 @@ export default {
   max-width: 460px; /* 最大宽度 */
   /* min-width: 400px;
   min-height: 680px; */
-  margin-top: 4vh;
+  margin-top: 6vh;
 }
 
 /* 移动设备 */
 @media (max-width: 768px) {
   /* 小于768px的设备 */
   .container {
-    max-height: 550px; /* 最大高度 */
+    max-height: 600px; /* 最大高度 */
     max-width: 360px; /* 最大宽度 */
     /* min-width: 360px;
     min-height: 600px; */
