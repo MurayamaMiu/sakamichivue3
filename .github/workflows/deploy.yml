@@ -32,12 +32,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Build and copy  docs to dist
-        run: |
-          cd docs && npm run docs:build
-          cd ..
-          cp -r ./public/docs ./dist/
       
       - name: :Run JS
         run: |
@@ -51,7 +45,6 @@ jobs:
 
       - name: Copy static files to dist
         run: |
-          cp -r ./public/docs ./dist/
           cp -r ./public/image ./dist/  # 复制 image 文件夹
           cp -r ./public/music ./dist/  # 复制 music 文件夹
           cp ./public/songs.json ./dist/  # 复制 songs.json 文件
