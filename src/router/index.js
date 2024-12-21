@@ -11,7 +11,7 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL), // hash 模式
   routes: [
     {
-      path: '/musicplayer',
+      path: '/',
       component: MusicPlayerView,
       children: [
         {
