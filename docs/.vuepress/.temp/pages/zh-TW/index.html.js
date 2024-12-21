@@ -1,3 +1,0 @@
-import comp from "C:/Users/koho/Documents/Code/sakamichivue3-githubpages/docs/.vuepress/.temp/pages/zh-TW/index.html.vue"
-const data = JSON.parse("{\"path\":\"/zh-TW/\",\"title\":\"櫻坂46\",\"lang\":\"ja-JP\",\"frontmatter\":{\"lang\":\"ja-JP\",\"title\":\"櫻坂46\",\"description\":\"櫻坂46ウイキ\"},\"headers\":[{\"level\":2,\"title\":\"Sakurazaka46\",\"slug\":\"sakurazaka46\",\"link\":\"#sakurazaka46\",\"children\":[]}],\"git\":{\"updatedTime\":1730987464000,\"contributors\":[{\"name\":\"西宮ソラ\",\"email\":\"kohojp@outlook.jp\",\"commits\":1}]},\"filePathRelative\":\"zh-TW/README.md\"}")
-export { comp, data }

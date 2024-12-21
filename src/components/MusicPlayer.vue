@@ -13,12 +13,12 @@
     </div>
 
     <div class="label">
-      <h2>{{ currentSong.displayName }}</h2>
-      <h4>{{ currentSong.artist }}</h4>
+      <h2 style="font-size: 1.8rem">{{ currentSong.displayName }}</h2>
+      <h4 style="font-size: 1.4rem">{{ currentSong.artist }}</h4>
     </div>
     <div class="lyrics">
-      <div>{{ currentLyrics.japanese }}</div>
-      <div>{{ currentLyrics.chinese }}</div>
+      <div style="font-size: 1rem">{{ currentLyrics.japanese }}</div>
+      <div style="font-size: 1rem">{{ currentLyrics.chinese }}</div>
     </div>
     <div class="player-progress">
       <vue-slider
@@ -147,7 +147,7 @@
       aria-labelledby="settingsModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered" style="width: 30vw">
         <div class="modal-content">
           <div class="modal-header">
             <h4
@@ -587,8 +587,9 @@ export default {
       })
     },
     loadMusic(song) {
-      if (this.sound && this.sound instanceof Howl) {
+      if (this.sound) {
         try {
+          this.sound.stop()
           this.sound.unload()
         } catch (error) {
           this.showMsgModal(this.$t('unloadError', { error: error.message }))
@@ -620,7 +621,7 @@ export default {
       this.sound = new Howl({
         src: [song.path],
         html5: true,
-        // preload: true, // 确保预加载完整文件
+        preload: true,
         // xhr: {
         //   // 设置请求头，确保加载完整文件
         //   headers: {
@@ -628,7 +629,7 @@ export default {
         //   },
         // },
         // rate: 1, //播放速度 0.5 - 4
-        // pool: 5, //类似数据库中的连接池，保留了一个池来回收利用以提高性能。声音暂停不会从池中删除。
+        pool: 5, //类似数据库中的连接池，保留了一个池来回收利用以提高性能。声音暂停不会从池中删除。
         onplay: () => {
           this.isPlaying = true
           this.updateProgressBar() // 在播放时更新进度条
@@ -801,7 +802,7 @@ export default {
 <style scoped>
 .lyrics {
   pointer-events: none;
-  min-height: 4em;
+  min-height: 8vh;
 }
 
 .toast {
@@ -832,7 +833,7 @@ export default {
 
 .settings-icon {
   margin-right: 20px; /* 图标和滑块之间的间距 */
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 .settings-slider {
@@ -849,6 +850,12 @@ export default {
   transition: transform 0.2s ease-out; /* 设置动画效果 */
 }
 
+@media (max-width: 768px) {
+  .modal {
+    width: 100vw;
+  }
+}
+
 .modal.show {
   /* 显示状态：从下方弹出 */
   transform: translateY(0);
@@ -856,7 +863,7 @@ export default {
 
 .music-duration {
   position: relative;
-  top: -5vh;
+  top: -6vh;
   min-height: 10px;
   display: flex;
   justify-content: space-between;
@@ -874,9 +881,17 @@ export default {
   align-items: center;
  */
   margin: 1vh auto;
-  width: 80vw;
+  width: 28vw;
   max-width: 350px;
   max-height: 4vh;
+}
+
+@media (max-width: 768px) {
+  .player-progress {
+    margin: 1vh auto;
+    width: 80vw;
+    max-height: 4vh;
+  }
 }
 
 .player-controls {
@@ -931,23 +946,23 @@ export default {
 }
 
 .player-img {
-  height: 35vh;
-  width: 15vw;
   position: relative;
   top: -6vh;
-  transform: translateY(-3vh); /* 图片浮动 */
+  transform: translateY(-1vh); /* 图片浮动 */
   margin: auto auto -5vh;
-  min-width: 420px;
-  min-height: 420px;
+  width: 46vh;
+  height: 46vh;
+  max-width: 25vw;
+  max-height: 25vw;
+
   /* 移除 overflow: hidden; 不再裁剪阴影 */
   border-radius: 20px; /* 默认圆角 */
 }
 
 @media (max-width: 768px) {
   .player-img {
-    min-width: 320px;
-    min-height: 320px;
-    transform: translateY(-2vh); /* 图片浮动 */
+    width: 46vh;
+    height: 46vh;
   }
 }
 
@@ -1010,8 +1025,8 @@ export default {
 
 .container {
   background-color: #e7e7e7;
-  height: 90vh;
-  width: 95vw;
+  height: 80vh;
+  width: 30vw;
   border-radius: 20px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
@@ -1022,9 +1037,9 @@ export default {
   margin: auto;
   position: relative;
   max-height: 840px; /* 最大高度 */
-  max-width: 460px; /* 最大宽度 */
-  /* min-width: 400px;
-  min-height: 680px; */
+  max-width: 420px; /* 最大宽度 */
+  /* min-width: 400px;*/
+  min-height: 530px;
   margin-top: 6vh;
 }
 
@@ -1033,14 +1048,14 @@ export default {
   /* 小于768px的设备 */
   .container {
     max-height: 600px; /* 最大高度 */
-    max-width: 360px; /* 最大宽度 */
+    min-width: 360px; /* 最大宽度 */
     /* min-width: 360px;
     min-height: 600px; */
   }
 }
 
 .label {
-  margin-top: -2vh;
+  margin-top: 0vh;
 }
 
 .container:hover {

@@ -368,19 +368,16 @@ export default {
 
 .list-group {
   max-height: 100vh; /* 最大高度 */
-  min-height: 100vh;
-  /* min-width: 400px; */
-  /* min-height: 740px; */
-  max-width: 440px;
+  width: 22vw;
+  min-width: 330px;
   overflow-y: auto;
   background-color: #e7e7e7;
 }
 
 @media (max-width: 768px) {
   .list-group {
-    max-height: 85vh;
     min-height: 85vh;
-    max-width: 100vw;
+    min-width: 100vw;
   }
 }
 

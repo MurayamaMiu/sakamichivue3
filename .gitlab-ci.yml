@@ -11,9 +11,6 @@ pages: # 定義用於部署的頁面
       - node_modules/ # 緩存 node_modules 目錄
   script: # 執行的腳本
     - npm install # 安装项目依赖
-    - cd docs && npm run docs:build # 生成文档
-    # - cp -a docs/.vuepress/dist/. public/docs/ # 将文档复制到 public/docs
-    - cd ..
     - cd public
     - node extract-covers.js
     - node songs-json-creation.js
