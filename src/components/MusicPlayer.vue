@@ -130,14 +130,6 @@
         data-bs-toggle="modal"
         data-bs-target="#settingsModal"
       ></i>
-      <!--      <i class="bi bi-three-dots"></i>-->
-      <!--
-      <i
-        class="bi bi-journal-code"
-        @click="goToDocs"
-        @auxclick="goToDocsNewTab"
-        style="cursor: pointer"
-      ></i> -->
     </div>
     <!-- Modal -->
     <div
@@ -423,17 +415,6 @@ export default {
       this.isCircularRotate = isCircular
       // 将当前样式保存到 localStorage
       localStorage.setItem('isCircularRotate', JSON.stringify(isCircular))
-    },
-    goToDocs(event) {
-      // 左键点击：在当前标签页跳转
-      event.preventDefault()
-      const newUrl = `${window.location.origin}${window.location.pathname}docs`
-      window.location.href = newUrl
-    },
-    goToDocsNewTab() {
-      // 长按或中键点击：在新标签页打开
-      const newUrl = `${window.location.origin}${window.location.pathname}docs`
-      window.open(newUrl, '_blank')
     },
     changeLanguage(newLanguage) {
       // const newLanguage = this.$i18n.locale === 'ja' ? 'zh' : 'ja' // 切换语言

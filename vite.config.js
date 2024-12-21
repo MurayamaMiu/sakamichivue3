@@ -57,8 +57,6 @@ export default defineConfig({
       input: {
         // eslint-disable-next-line no-undef
         main: resolve(__dirname, 'index.html'),
-        // eslint-disable-next-line no-undef
-        docs: resolve(__dirname, 'public/docs/index.html'),
       },
     },
   },
