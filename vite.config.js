@@ -8,7 +8,7 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/musicplayer-vue3/', // 替换为你的 GitHub 项目名称
+   base: '/', // 替换为你的 GitHub 项目名称
   plugins: [
     vue(),
     vueJsx(),
