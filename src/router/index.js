@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import MusicPlayerView from '../views/MusicPlayerView.vue'
 import SongList from '@/components/SongList.vue'
 import MusicPlayer from '@/components/MusicPlayer.vue'
@@ -8,7 +8,7 @@ const router = createRouter({
 
   // 静态文件托管的限制：GitHub Pages 是一个静态网站托管服务，它不处理动态路由。当你访问 https://your-username.github.io/repository-name/musicplayer 时，GitHub 会尝试寻找 musicplayer 目录下的 index.html 文件，但由于它只会直接提供静态资源而不会处理 Vue Router 的动态路由，所以会导致 404 错误。
   // history: createWebHistory(import.meta.env.BASE_URL),
-  history: createWebHistory(import.meta.env.BASE_URL), // hash 模式
+  history: createWebHashHistory(import.meta.env.BASE_URL), // hash 模式
   routes: [
     {
       path: '/',
