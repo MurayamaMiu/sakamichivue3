@@ -1,5 +1,5 @@
 {
-  "name": "sakamichivue3",
+  "name": "musicplayer-vue3",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,7 +18,7 @@
     "howler": "^2.2.4",
     "music-metadata": "^10.5.1",
     "pinia": "^2.2.4",
-    "sakamichivue3": "file:",
+    "musicplayer-vue3": "file:",
     "vue": "^3.5.12",
     "vue-i18n": "^10.0.4",
     "vue-router": "^4.4.5",

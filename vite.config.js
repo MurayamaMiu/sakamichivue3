@@ -8,7 +8,7 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/sakamichivue3/', // 替换为你的 GitHub 项目名称
+  base: '/musicplayer-vue3/', // 替换为你的 GitHub 项目名称
   plugins: [
     vue(),
     vueJsx(),
@@ -25,14 +25,14 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'SakamichiVue3Player',
+        name: 'musicplayer-vue3',
         short_name: 'SakamichiPlayer',
         description: '坂道應用合集',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
-        scope: '/sakamichivue3/',
-        start_url: '/sakamichivue3/',
+        scope: '/musicplayer-vue3/',
+        start_url: '/musicplayer-vue3/',
         icons: [
           {
             src: 'icon/logo192.png',
