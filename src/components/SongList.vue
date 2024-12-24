@@ -165,48 +165,47 @@ export default {
   },
   data() {
     return {
-      // 从 localStorage 获取已保存的 tab，若没有则使用默认值
-      activeTab: localStorage.getItem('activeTab') || 'all-songs',
-      songs: [], // 用于存放歌曲信息
-      favoritedSongs: [], // 用于存放收藏的歌曲信息
-      searchQuery: '', // 用于存放搜索框的文本
-      filteredSongs: [], // 用于存放过滤后的歌曲
+      activeTab: localStorage.getItem('activeTab') || 'all-songs', // 默認為 'all-songs'
+      songs: [], // 存放所有歌曲
+      favoritedSongs: [], // 存放收藏歌曲
+      searchQuery: '', // 搜索框文本
+      filteredSongs: [], // 篩選後的歌曲
     }
   },
   mounted() {
-    // 页面加载时检查 localStorage 是否有选中的 tab，并设置相应的 class
-    const savedTab = localStorage.getItem('activeTab')
-    if (savedTab) {
-      this.activeTab = savedTab
-    }
-
-    this.fetchSongs() // 组件挂载后加载歌曲信息
-    this.loadFavoritedSongs() // 加载收藏歌曲
+    this.fetchSongs() // 獲取歌曲數據
   },
   methods: {
-    switchTab(tab) {
-      this.activeTab = tab
-      if (tab === 'favorited-songs') {
-        this.loadFavoritedSongs()
-      } else {
-        this.loadGroupSongs(tab) // 直接调用加载组歌曲的方法
-      }
-      localStorage.setItem('activeTab', tab) // 将选中的 tab 存储到 localStorage
-    },
     async fetchSongs() {
       try {
         const response = await axios.get('songs.json')
         this.songs = response.data.songs
-        this.filteredSongs = this.songs // 初始化时显示所有歌曲
-        this.loadFavoritedSongs() // 在获取到歌曲后调用
+        this.filteredSongs = this.songs // 初始化為顯示所有歌曲
+
+        // 根據保存的 tab 加載對應的歌曲
+        this.loadTabSongs(this.activeTab)
       } catch (error) {
         console.error('Error fetching songs:', error)
+      }
+    },
+    switchTab(tab) {
+      this.activeTab = tab
+      this.loadTabSongs(tab)
+      localStorage.setItem('activeTab', tab) // 保存到 localStorage
+    },
+    loadTabSongs(tab) {
+      if (tab === 'favorited-songs') {
+        this.loadFavoritedSongs()
+      } else if (tab === 'all-songs') {
+        this.filteredSongs = this.songs // 顯示所有歌曲
+      } else {
+        this.loadGroupSongs(tab)
       }
     },
     loadFavoritedSongs() {
       const favoritedIds =
         JSON.parse(localStorage.getItem('favoritedSongs')) || []
-      this.favoritedSongs = this.songs.filter(song =>
+      this.filteredSongs = this.songs.filter(song =>
         favoritedIds.includes(Number(song.id)),
       )
     },
@@ -216,17 +215,15 @@ export default {
         nogizaka: '乃木坂46',
         hinatazaka: '日向坂46',
         keyakizaka: '欅坂46',
-        others: '', // 对应的是除上述四个歌手之外的其他歌曲
+        others: '', // 其他歌曲
       }
 
       if (group === 'others') {
-        // 如果是 'others'，过滤出歌手不在上述四个歌手中的歌曲
-        this.favoritedSongs = this.songs.filter(
+        this.filteredSongs = this.songs.filter(
           song => !Object.values(groupArtists).includes(song.artist),
         )
       } else {
-        // 否则，按照具体的团体筛选歌曲
-        this.favoritedSongs = this.songs.filter(
+        this.filteredSongs = this.songs.filter(
           song => song.artist === groupArtists[group],
         )
       }
@@ -240,7 +237,7 @@ export default {
       )
     },
     playSong(song) {
-      this.$emit('selectSong', parseInt(song.id, 10)) // 确保将 ID 转换为数字
+      this.$emit('selectSong', parseInt(song.id, 10)) // 確保 ID 為數字
     },
   },
 }

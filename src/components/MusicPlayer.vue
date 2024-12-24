@@ -844,7 +844,7 @@ export default {
 
 .music-duration {
   position: relative;
-  top: -6vh;
+  top: -5.5vh;
   min-height: 10px;
   display: flex;
   justify-content: space-between;
@@ -944,6 +944,8 @@ export default {
   .player-img {
     width: 46vh;
     height: 46vh;
+    max-width: 80vw;
+    max-height: 80vw;
   }
 }
 
