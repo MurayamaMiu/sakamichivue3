@@ -132,7 +132,7 @@
       <div class="tab-pane fade" id="favorited-songs">
         <div
           class="list-group-item d-flex align-items-center"
-          v-for="song in favoritedSongs"
+          v-for="song in filteredSongs"
           :key="song.id"
           :class="{ active: song.id === currentSongId }"
           @click="playSong(song)"
@@ -165,24 +165,23 @@ export default {
   },
   data() {
     return {
-      activeTab: localStorage.getItem('activeTab') || 'all-songs', // 默認為 'all-songs'
-      songs: [], // 存放所有歌曲
-      favoritedSongs: [], // 存放收藏歌曲
-      searchQuery: '', // 搜索框文本
-      filteredSongs: [], // 篩選後的歌曲
+      activeTab: localStorage.getItem('activeTab') || 'all-songs',
+      songs: [],
+      favoritedSongs: [],
+      searchQuery: '',
+      filteredSongs: [],
     }
   },
   mounted() {
-    this.fetchSongs() // 獲取歌曲數據
+    this.fetchSongs()
   },
   methods: {
     async fetchSongs() {
       try {
         const response = await axios.get('songs.json')
         this.songs = response.data.songs
-        this.filteredSongs = this.songs // 初始化為顯示所有歌曲
+        this.filteredSongs = this.songs
 
-        // 根據保存的 tab 加載對應的歌曲
         this.loadTabSongs(this.activeTab)
       } catch (error) {
         console.error('Error fetching songs:', error)
@@ -191,17 +190,22 @@ export default {
     switchTab(tab) {
       this.activeTab = tab
       this.loadTabSongs(tab)
-      localStorage.setItem('activeTab', tab) // 保存到 localStorage
+      localStorage.setItem('activeTab', tab)
     },
     loadTabSongs(tab) {
+      if (!this.songs.length) {
+        console.warn('歌曲數據尚未加載')
+        return
+      }
       if (tab === 'favorited-songs') {
         this.loadFavoritedSongs()
       } else if (tab === 'all-songs') {
-        this.filteredSongs = this.songs // 顯示所有歌曲
+        this.filteredSongs = this.songs
       } else {
         this.loadGroupSongs(tab)
       }
     },
+
     loadFavoritedSongs() {
       const favoritedIds =
         JSON.parse(localStorage.getItem('favoritedSongs')) || []
@@ -209,13 +213,14 @@ export default {
         favoritedIds.includes(Number(song.id)),
       )
     },
+
     loadGroupSongs(group) {
       const groupArtists = {
         sakurazaka: '櫻坂46',
         nogizaka: '乃木坂46',
         hinatazaka: '日向坂46',
         keyakizaka: '欅坂46',
-        others: '', // 其他歌曲
+        others: '',
       }
 
       if (group === 'others') {
@@ -225,7 +230,9 @@ export default {
       } else {
         this.filteredSongs = this.songs.filter(
           song => song.artist === groupArtists[group],
+          console.log(groupArtists[group])
         )
+        console.log(this.filteredSongs)
       }
     },
     filterSongs() {
@@ -237,7 +244,7 @@ export default {
       )
     },
     playSong(song) {
-      this.$emit('selectSong', parseInt(song.id, 10)) // 確保 ID 為數字
+      this.$emit('selectSong', parseInt(song.id, 10))
     },
   },
 }
