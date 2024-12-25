@@ -950,7 +950,8 @@ export default {
 @media (max-width: 768px) {
   /* 小于768px的设备 */
   .container {
-    max-height: 590px;
+    height: 88vh;
+    max-height: 600px;
     min-width: 360px; /* 最大宽度 */
     /* min-width: 360px;
     min-height: 600px; */
