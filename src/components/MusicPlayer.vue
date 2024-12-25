@@ -863,7 +863,7 @@ export default {
  */
   margin: 1vh auto;
   width: 28vw;
-  max-width: 350px;
+  max-width: 380px;
   max-height: 4vh;
 }
 
@@ -924,6 +924,37 @@ export default {
   cursor: pointer; /* 添加光标样式 */
   font-size: 1.5em;
   color: #666666;
+}
+
+.container {
+  background-color: #e7e7e7;
+  height: 80vh;
+  width: 30vw;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  display: flex; /* 启用 Flexbox */
+  flex-direction: column;
+  justify-content: center; /* 水平居中 */
+  text-align: center;
+  margin: auto;
+  position: relative;
+  max-height: 840px; /* 最大高度 */
+  max-width: 500px; /* 最大宽度 */
+  /* min-width: 400px;*/
+  min-height: 530px;
+  margin-top: 6vh;
+}
+
+/* 移动设备 */
+@media (max-width: 768px) {
+  /* 小于768px的设备 */
+  .container {
+    max-height: 590px;
+    min-width: 360px; /* 最大宽度 */
+    /* min-width: 360px;
+    min-height: 600px; */
+  }
 }
 
 .player-img {
@@ -1004,37 +1035,6 @@ export default {
 /* Hover 状态下图片的阴影 */
 .player-img:hover::before {
   box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.8);
-}
-
-.container {
-  background-color: #e7e7e7;
-  height: 80vh;
-  width: 30vw;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
-  display: flex; /* 启用 Flexbox */
-  flex-direction: column;
-  justify-content: center; /* 水平居中 */
-  text-align: center;
-  margin: auto;
-  position: relative;
-  max-height: 840px; /* 最大高度 */
-  max-width: 420px; /* 最大宽度 */
-  /* min-width: 400px;*/
-  min-height: 530px;
-  margin-top: 6vh;
-}
-
-/* 移动设备 */
-@media (max-width: 768px) {
-  /* 小于768px的设备 */
-  .container {
-    max-height: 600px; /* 最大高度 */
-    min-width: 360px; /* 最大宽度 */
-    /* min-width: 360px;
-    min-height: 600px; */
-  }
 }
 
 .label {
